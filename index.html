@@ -1,188 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Grammar Quiz App</title>
+
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini App Portal</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f8ff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 30px;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+    }
+
+    h1 {
       text-align: center;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .card-link {
+      text-decoration: none;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       padding: 20px;
+      text-align: center;
+      transition: transform 0.2s, background 0.3s;
+      color: #333;
     }
-    .topic-list, .quiz-box {
-      margin: 20px auto;
-      max-width: 500px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #e0f7fa;
     }
-    button {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      background: #4CAF50;
-      color: white;
-    }
-    .option {
-      background: #2196F3;
-    }
-    .feedback {
-      font-size: 16px;
-      margin-top: 10px;
-    }
-    .score {
-      font-weight: bold;
-      margin: 10px 0;
+
+    .app-title {
+      font-size: 1.3em;
+      color: #444;
     }
   </style>
 </head>
 <body>
-  <div class="topic-list" id="topic-list">
-    <h2>Select a Grammar Topic</h2>
-    <button onclick="startQuiz('present_simple')">Present Simple</button>
-    <button onclick="startQuiz('present_continuous')">Present Continuous</button>
-    <button onclick="startQuiz('future_simple')">Future Simple</button>
-    <button onclick="startQuiz('past_simple')">Past Simple</button>
+  <h1>🌟 Mini App Dashboard 🌟</h1>
+  <div class="list" id="miniAppsContainer">
+    <!-- Cards will be added here -->
   </div>
-
-  <div class="quiz-box" id="quiz-box" style="display:none;">
-    <h2 id="question"></h2>
-    <div id="options"></div>
-    <div class="feedback" id="feedback"></div>
-    <div class="score">Score: <span id="score">0</span></div>
-    <button onclick="nextQuestion()" id="next-btn" style="display:none;">Next</button>
-  </div>
-
-  <audio id="winSound" src="https://www.soundjay.com/human/sounds/applause-8.mp3"></audio>
-  <audio id="loseSound" src="https://www.soundjay.com/button/sounds/button-10.mp3"></audio>
-
   <script>
-    const quizData = {
-  present_simple: [
-    { q: "He ___ football every weekend.", a: ["plays", "play", "playing", "played"], c: "plays", e: "Use 'plays' with 'he' in affirmative." },
-    { q: "She ___ not like apples.", a: ["does", "do", "did", "done"], c: "does", e: "Use 'does not' for negative." },
-    { q: "___ they go to school on Sundays?", a: ["Do", "Does", "Did", "Are"], c: "Do", e: "Use 'Do' for present simple questions." },
-    { q: "I ___ breakfast at 7 a.m.", a: ["have", "has", "had", "having"], c: "have", e: "Use 'have' with 'I'." },
-    { q: "They ___ not eat meat.", a: ["do", "does", "did", "done"], c: "do", e: "Use 'do not' for plural subjects." },
-    { q: "___ she go to school every day?", a: ["Does", "Do", "Is", "Did"], c: "Does", e: "Use 'Does' for third person singular." },
-    { q: "We ___ English at school.", a: ["learn", "learns", "learning", "learned"], c: "learn", e: "Use base form with 'we'." },
-    { q: "He ___ not read books.", a: ["does", "do", "did", "done"], c: "does", e: "Use 'does not' with 'he'." },
-    { q: "Do you ___ to music?", a: ["listen", "listens", "listening", "listened"], c: "listen", e: "Use base verb after 'do you'." },
-    { q: "The sun ___ in the east.", a: ["rises", "rise", "rose", "rising"], c: "rises", e: "Affirmative with 'it'." }
-  ],
-  present_continuous: [
-    { q: "I ___ watching TV now.", a: ["am", "is", "are", "was"], c: "am", e: "Use 'am' with 'I'." },
-    { q: "She ___ not doing her homework.", a: ["is", "are", "am", "was"], c: "is", e: "Use 'is not' with 'she'." },
-    { q: "___ you reading a book?", a: ["Are", "Is", "Do", "Did"], c: "Are", e: "Use 'Are' for questions with 'you'." },
-    { q: "They ___ playing football.", a: ["are", "is", "am", "be"], c: "are", e: "Use 'are' with 'they'." },
-    { q: "He ___ not listening to music.", a: ["is", "are", "am", "was"], c: "is", e: "Use 'is not' with 'he'." },
-    { q: "___ she writing a letter?", a: ["Is", "Are", "Am", "Do"], c: "Is", e: "Use 'Is' with 'she' in questions." },
-    { q: "We ___ studying right now.", a: ["are", "is", "am", "was"], c: "are", e: "Use 'are' with 'we'." },
-    { q: "My friends ___ not coming.", a: ["are", "is", "am", "was"], c: "are", e: "Use 'are not' with plural subject." },
-    { q: "___ they playing outside?", a: ["Are", "Is", "Do", "Does"], c: "Are", e: "Use 'Are' for plural questions." },
-    { q: "The dog ___ barking.", a: ["is", "are", "am", "was"], c: "is", e: "Use 'is' with singular subject." }
-  ],
-  future_simple: [
-    { q: "I ___ go shopping tomorrow.", a: ["will", "am", "do", "did"], c: "will", e: "Use 'will' + V." },
-    { q: "He ___ not visit us.", a: ["will", "do", "does", "did"], c: "will", e: "Use 'will not' for future negative." },
-    { q: "___ she help me?", a: ["Will", "Do", "Does", "Is"], c: "Will", e: "Use 'Will' for future questions." },
-    { q: "We ___ travel to Paris.", a: ["will", "do", "are", "can"], c: "will", e: "Affirmative future simple." },
-    { q: "They ___ not eat lunch.", a: ["will", "do", "are", "did"], c: "will", e: "Negative with 'will not'." },
-    { q: "___ they go to the zoo?", a: ["Will", "Do", "Does", "Did"], c: "Will", e: "Use 'Will' for yes/no question." },
-    { q: "She ___ bring her books.", a: ["will", "is", "does", "do"], c: "will", e: "Affirmative with 'she'." },
-    { q: "I ___ not call him.", a: ["will", "do", "did", "am"], c: "will", e: "Future negative form." },
-    { q: "What ___ you do tomorrow?", a: ["will", "do", "are", "did"], c: "will", e: "WH- question in future." },
-    { q: "You ___ see the doctor soon.", a: ["will", "are", "do", "did"], c: "will", e: "Use 'will' + base verb." }
-  ],
-  past_simple: [
-    { q: "I ___ my homework yesterday.", a: ["did", "do", "does", "done"], c: "did", e: "Past of 'do'." },
-    { q: "She ___ not eat lunch.", a: ["did", "do", "does", "was"], c: "did", e: "Use 'did not' for negative past." },
-    { q: "___ you go to the zoo?", a: ["Did", "Do", "Does", "Are"], c: "Did", e: "Question in past simple." },
-    { q: "They ___ a movie last night.", a: ["watched", "watch", "watching", "watches"], c: "watched", e: "Past of 'watch'." },
-    { q: "He ___ not come home.", a: ["did", "do", "does", "was"], c: "did", e: "Negative with 'did not'." },
-    { q: "___ she see the doctor?", a: ["Did", "Does", "Do", "Was"], c: "Did", e: "Past question with 'Did'." },
-    { q: "We ___ to school on time.", a: ["went", "go", "gone", "going"], c: "went", e: "Past of 'go'." },
-    { q: "You ___ not finish the test.", a: ["did", "do", "does", "done"], c: "did", e: "Negative form." },
-    { q: "What ___ he say?", a: ["did", "do", "does", "done"], c: "did", e: "WH- past question." },
-    { q: "My parents ___ dinner at 7 p.m.", a: ["cooked", "cook", "cooking", "cooks"], c: "cooked", e: "Past form." }
-  ]
-};
+    const apps = [
+      {name: "grammar App", folder: "Grammar" },
+    ];
 
-    let currentQuiz = [];
-    let currentIndex = 0;
-    let score = 0;
-    let attempt = 0;
+    const container = document.getElementById("miniAppsContainer");
 
-    function startQuiz(topic) {
-      currentQuiz = [...quizData[topic]];
-      while (currentQuiz.length < 10) {
-        currentQuiz = currentQuiz.concat(quizData[topic]);
-      }
-      currentQuiz = currentQuiz.slice(0, 10);
-      currentIndex = 0;
-      score = 0;
-      attempt = 0;
-      document.getElementById('topic-list').style.display = 'none';
-      document.getElementById('quiz-box').style.display = 'block';
-      loadQuestion();
-    }
+    apps.forEach(app => {
+      const link = document.createElement("a");
+      link.href = `./${app.folder}/index.html`;
+      link.className = "card-link";
 
-    function loadQuestion() {
-      const q = currentQuiz[currentIndex];
-      document.getElementById('question').textContent = q.q;
-      const optionsDiv = document.getElementById('options');
-      optionsDiv.innerHTML = '';
-      q.a.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.className = 'option';
-        btn.textContent = opt;
-        btn.onclick = () => checkAnswer(opt);
-        optionsDiv.appendChild(btn);
-      });
-      document.getElementById('feedback').textContent = '';
-      document.getElementById('next-btn').style.display = 'none';
-    }
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `<div class="app-title">${app.name}</div>`;
 
-    function checkAnswer(selected) {
-      const correct = currentQuiz[currentIndex].c;
-      const feedback = document.getElementById('feedback');
-      if (selected === correct) {
-        if (attempt === 0) score++;
-        feedback.textContent = 'Correct!';
-        document.getElementById('score').textContent = score;
-        document.getElementById('next-btn').style.display = 'block';
-        if (score === 10) document.getElementById('winSound').play();
-        if (score === -10) document.getElementById('loseSound').play();
-      } else {
-        if (attempt === 0) {
-          feedback.textContent = 'Incorrect. Hint: ' + currentQuiz[currentIndex].e;
-          attempt = 1;
-        } else {
-          feedback.textContent = 'Incorrect again. The correct answer is ' + correct;
-          score--;
-          document.getElementById('score').textContent = score;
-          document.getElementById('next-btn').style.display = 'block';
-          if (score === -10) document.getElementById('loseSound').play();
-        }
-      }
-    }
-
-    function nextQuestion() {
-      currentIndex++;
-      attempt = 0;
-      if (currentIndex < currentQuiz.length) {
-        loadQuestion();
-      } else {
-        document.getElementById('quiz-box').innerHTML = '<h2>Quiz Complete!</h2><p>Your score: ' + score + '</p><button onclick="location.reload()">Try Again</button>';
-      }
-    }
+      link.appendChild(card);
+      container.appendChild(link);
+    });
   </script>
-</body>
-</html>
+
+
+</body></html>
