@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pronunciation Practice</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Pronunciation Practice</h1>
+    <p>Record & Listen to Your Voice</p>
+
+    <button id="recordButton" class="mic-button">🎤</button>
+
+    <div class="controls">
+      <button id="stopButton" disabled>⏹</button>
+      <button id="playButton" disabled>▶️</button>
+      <a id="downloadLink" class="download" download="recording.webm">⬇️</a>
+    </div>
+
+    <audio id="audioPlayback" controls style="display: none;"></audio>
+
+    <button id="speechToTextButton">🗣️ Speech to Text</button>
+    <p id="speechResult" style="color:#444;"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
