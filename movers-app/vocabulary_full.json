@@ -1,0 +1,798 @@
+{
+  "Animals": [
+    {
+      "word": "bat",
+      "meaning": "con dơi"
+    },
+    {
+      "word": "bear",
+      "meaning": "con gấu"
+    },
+    {
+      "word": "cage",
+      "meaning": "cái lồng, cái chuồng"
+    },
+    {
+      "word": "dolphin",
+      "meaning": "cá heo"
+    },
+    {
+      "word": "fly",
+      "meaning": "con ruồi"
+    },
+    {
+      "word": "kangaroo",
+      "meaning": "con chuột túi"
+    },
+    {
+      "word": "kitten",
+      "meaning": "mèo con"
+    },
+    {
+      "word": "lion",
+      "meaning": "con sư tử"
+    },
+    {
+      "word": "panda",
+      "meaning": "con gấu trúc"
+    },
+    {
+      "word": "parrot",
+      "meaning": "con vẹt"
+    },
+    {
+      "word": "pet",
+      "meaning": "thú cưng"
+    },
+    {
+      "word": "puppy",
+      "meaning": "chó con"
+    },
+    {
+      "word": "rabbit",
+      "meaning": "con thỏ"
+    },
+    {
+      "word": "shark",
+      "meaning": "cá mập"
+    },
+    {
+      "word": "whale",
+      "meaning": "cá voi"
+    }
+  ],
+  "Body and Face": [
+    {
+      "word": "back",
+      "meaning": "lưng"
+    },
+    {
+      "word": "beard",
+      "meaning": "râu quai nón"
+    },
+    {
+      "word": "blond(e)",
+      "meaning": "màu vàng (dùng cho tóc)"
+    },
+    {
+      "word": "curly",
+      "meaning": "quăn"
+    },
+    {
+      "word": "fair",
+      "meaning": "vàng (tóc); trắng, sáng (da)"
+    },
+    {
+      "word": "moustache",
+      "meaning": "ria mép"
+    },
+    {
+      "word": "neck",
+      "meaning": "cổ"
+    },
+    {
+      "word": "shoulder",
+      "meaning": "vai"
+    },
+    {
+      "word": "stomach",
+      "meaning": "bụng"
+    },
+    {
+      "word": "straight",
+      "meaning": "thẳng"
+    },
+    {
+      "word": "tooth / teeth",
+      "meaning": "một cái răng / nhiều cái răng"
+    }
+  ],
+  "Clothes": [
+    {
+      "word": "coat",
+      "meaning": "áo choàng, áo khoác dài"
+    },
+    {
+      "word": "helmet",
+      "meaning": "mũ (nón) bảo hiểm"
+    },
+    {
+      "word": "scarf",
+      "meaning": "khăn choàng cổ"
+    },
+    {
+      "word": "sweater",
+      "meaning": "áo len"
+    },
+    {
+      "word": "swimsuit",
+      "meaning": "quần áo bơi"
+    }
+  ],
+  "Family and Friends": [
+    {
+      "word": "aunt",
+      "meaning": "cô, dì"
+    },
+    {
+      "word": "daughter",
+      "meaning": "con gái"
+    },
+    {
+      "word": "granddaughter",
+      "meaning": "cháu (nội, ngoại) gái"
+    },
+    {
+      "word": "grandparents",
+      "meaning": "ông bà (nội, ngoại)"
+    },
+    {
+      "word": "grandson",
+      "meaning": "cháu (nội, ngoại) trai"
+    },
+    {
+      "word": "grown-up",
+      "meaning": "người lớn / người trưởng thành"
+    },
+    {
+      "word": "parents",
+      "meaning": "cha mẹ"
+    },
+    {
+      "word": "son",
+      "meaning": "con trai"
+    },
+    {
+      "word": "uncle",
+      "meaning": "chú, bác, cậu, dượng"
+    }
+  ],
+  "Food and Drinks": [
+    {
+      "word": "bottle",
+      "meaning": "cái chai, bình"
+    },
+    {
+      "word": "bowl",
+      "meaning": "cái chén, tô"
+    },
+    {
+      "word": "cheese",
+      "meaning": "phô mai"
+    },
+    {
+      "word": "coffee",
+      "meaning": "cà phê"
+    },
+    {
+      "word": "cup",
+      "meaning": "cái tách"
+    },
+    {
+      "word": "glass",
+      "meaning": "cái ly, cốc (dụng thức uống)"
+    },
+    {
+      "word": "hungry",
+      "meaning": "đói bụng"
+    },
+    {
+      "word": "milkshake",
+      "meaning": "sữa khuấy"
+    },
+    {
+      "word": "noodles",
+      "meaning": "mì"
+    },
+    {
+      "word": "pancake",
+      "meaning": "bánh kếp"
+    },
+    {
+      "word": "pasta",
+      "meaning": "mì ống, mì nui"
+    },
+    {
+      "word": "picnic",
+      "meaning": "dã ngoại"
+    },
+    {
+      "word": "plate",
+      "meaning": "cái đĩa"
+    },
+    {
+      "word": "salad",
+      "meaning": "rau trộn"
+    },
+    {
+      "word": "sandwich",
+      "meaning": "bánh mì kẹp thịt"
+    },
+    {
+      "word": "sauce",
+      "meaning": "nước xốt"
+    },
+    {
+      "word": "soup",
+      "meaning": "súp"
+    },
+    {
+      "word": "tea",
+      "meaning": "trà"
+    },
+    {
+      "word": "thirsty",
+      "meaning": "khát"
+    },
+    {
+      "word": "vegetable",
+      "meaning": "rau củ"
+    }
+  ],
+  "Health": [
+    {
+      "word": "cold",
+      "meaning": "cảm lạnh"
+    },
+    {
+      "word": "cough",
+      "meaning": "ho"
+    },
+    {
+      "word": "cry",
+      "meaning": "khóc"
+    },
+    {
+      "word": "dentist",
+      "meaning": "nha sĩ"
+    }
+  ],
+  "Places and Directions": [
+    {
+      "word": "supermarket",
+      "meaning": "siêu thị"
+    },
+    {
+      "word": "swimming pool",
+      "meaning": "hồ bơi"
+    },
+    {
+      "word": "zoo",
+      "meaning": "sở thú"
+    },
+    {
+      "word": "hospital",
+      "meaning": "bệnh viện"
+    },
+    {
+      "word": "library",
+      "meaning": "thư viện"
+    },
+    {
+      "word": "market",
+      "meaning": "chợ"
+    },
+    {
+      "word": "playground",
+      "meaning": "sân chơi"
+    },
+    {
+      "word": "station",
+      "meaning": "trạm (xe)"
+    },
+    {
+      "word": "bank",
+      "meaning": "ngân hàng"
+    },
+    {
+      "word": "café",
+      "meaning": "tiệm bán đồ uống và thức ăn nhẹ"
+    },
+    {
+      "word": "car park",
+      "meaning": "bãi đỗ xe"
+    },
+    {
+      "word": "centre / center",
+      "meaning": "trung tâm"
+    },
+    {
+      "word": "city / town centre",
+      "meaning": "trung tâm thành phố / thị trấn"
+    },
+    {
+      "word": "map",
+      "meaning": "bản đồ"
+    },
+    {
+      "word": "shopping centre / center",
+      "meaning": "trung tâm mua sắm"
+    },
+    {
+      "word": "farm",
+      "meaning": "trang trại"
+    },
+    {
+      "word": "funfair",
+      "meaning": "hội chợ"
+    },
+    {
+      "word": "bus stop",
+      "meaning": "bến xe buýt"
+    },
+    {
+      "word": "place",
+      "meaning": "nơi, nơi chốn"
+    },
+    {
+      "word": "opposite",
+      "meaning": "(ở) đối diện"
+    },
+    {
+      "word": "near",
+      "meaning": "(ở) gần"
+    },
+    {
+      "word": "square",
+      "meaning": "quảng trường"
+    },
+    {
+      "word": "road",
+      "meaning": "con đường"
+    },
+    {
+      "word": "circle",
+      "meaning": "vòng tròn"
+    },
+    {
+      "word": "straight",
+      "meaning": "thẳng (đi thẳng)"
+    }
+  ],
+  "The Home": [
+    {
+      "word": "toothpaste",
+      "meaning": "kem đánh răng"
+    },
+    {
+      "word": "towel",
+      "meaning": "khăn tắm"
+    },
+    {
+      "word": "upstairs",
+      "meaning": "trên lầu"
+    },
+    {
+      "word": "wash",
+      "meaning": "tắm rửa, giặt giũ"
+    },
+    {
+      "word": "above",
+      "meaning": "ở (phía) trên"
+    },
+    {
+      "word": "below",
+      "meaning": "ở (phía) dưới"
+    },
+    {
+      "word": "building",
+      "meaning": "tòa nhà"
+    },
+    {
+      "word": "address",
+      "meaning": "địa chỉ"
+    },
+    {
+      "word": "balcony",
+      "meaning": "ban công"
+    },
+    {
+      "word": "basement",
+      "meaning": "tầng hầm"
+    },
+    {
+      "word": "blanket",
+      "meaning": "cái chăn, mền"
+    },
+    {
+      "word": "downstairs",
+      "meaning": "dưới lầu"
+    },
+    {
+      "word": "dream",
+      "meaning": "giấc mơ"
+    },
+    {
+      "word": "elevator / lift",
+      "meaning": "thang máy"
+    },
+    {
+      "word": "fan",
+      "meaning": "cái quạt"
+    },
+    {
+      "word": "flat",
+      "meaning": "căn hộ"
+    },
+    {
+      "word": "floor",
+      "meaning": "sàn nhà"
+    },
+    {
+      "word": "internet",
+      "meaning": "mạng máy tính"
+    },
+    {
+      "word": "home",
+      "meaning": "nhà"
+    },
+    {
+      "word": "message",
+      "meaning": "tin nhắn"
+    },
+    {
+      "word": "roof",
+      "meaning": "mái nhà"
+    },
+    {
+      "word": "seat",
+      "meaning": "chỗ ngồi"
+    },
+    {
+      "word": "shower",
+      "meaning": "vòi sen"
+    },
+    {
+      "word": "stairs",
+      "meaning": "cầu thang"
+    },
+    {
+      "word": "toothbrush",
+      "meaning": "bàn chải đánh răng"
+    }
+  ],
+  "Time": [
+    {
+      "word": "after",
+      "meaning": "sau khi"
+    },
+    {
+      "word": "always",
+      "meaning": "luôn luôn"
+    },
+    {
+      "word": "before",
+      "meaning": "trước khi"
+    },
+    {
+      "word": "every",
+      "meaning": "mỗi, mọi"
+    },
+    {
+      "word": "never",
+      "meaning": "không bao giờ"
+    },
+    {
+      "word": "o’clock",
+      "meaning": "giờ"
+    },
+    {
+      "word": "sometimes",
+      "meaning": "đôi khi"
+    },
+    {
+      "word": "week",
+      "meaning": "tuần"
+    },
+    {
+      "word": "weekend",
+      "meaning": "ngày cuối tuần"
+    },
+    {
+      "word": "yesterday",
+      "meaning": "hôm qua"
+    },
+    {
+      "word": "Sunday",
+      "meaning": "Chủ Nhật"
+    },
+    {
+      "word": "Monday",
+      "meaning": "Thứ Hai"
+    },
+    {
+      "word": "Tuesday",
+      "meaning": "Thứ Ba"
+    },
+    {
+      "word": "Wednesday",
+      "meaning": "Thứ Tư"
+    },
+    {
+      "word": "Thursday",
+      "meaning": "Thứ Năm"
+    },
+    {
+      "word": "Friday",
+      "meaning": "Thứ Sáu"
+    },
+    {
+      "word": "Saturday",
+      "meaning": "Thứ Bảy"
+    }
+  ],
+  "School": [
+    {
+      "word": "break",
+      "meaning": "giờ nghỉ / giờ giải lao"
+    },
+    {
+      "word": "homework",
+      "meaning": "bài tập về nhà"
+    },
+    {
+      "word": "mistake",
+      "meaning": "lỗi sai"
+    },
+    {
+      "word": "teach",
+      "meaning": "dạy"
+    },
+    {
+      "word": "text",
+      "meaning": "bài văn, bài đọc"
+    },
+    {
+      "word": "website",
+      "meaning": "trang mạng"
+    }
+  ],
+  "Sports and Leisures": [
+    {
+      "word": "practice",
+      "meaning": "luyện tập"
+    },
+    {
+      "word": "present",
+      "meaning": "quà tặng"
+    },
+    {
+      "word": "ride",
+      "meaning": "đạp (xe) / cưỡi (ngựa)"
+    },
+    {
+      "word": "roller skates",
+      "meaning": "giày trượt patin"
+    },
+    {
+      "word": "roller skating",
+      "meaning": "trượt patin"
+    },
+    {
+      "word": "sail",
+      "meaning": "lái (thuyền buồm)"
+    },
+    {
+      "word": "score",
+      "meaning": "ghi điểm / ghi bàn"
+    },
+    {
+      "word": "skate",
+      "meaning": "trượt băng"
+    },
+    {
+      "word": "sports centre",
+      "meaning": "trung tâm thể dục thể thao"
+    },
+    {
+      "word": "swim",
+      "meaning": "bơi"
+    },
+    {
+      "word": "swimming pool",
+      "meaning": "hồ bơi"
+    },
+    {
+      "word": "towel",
+      "meaning": "khăn tắm"
+    },
+    {
+      "word": "video",
+      "meaning": "băng video"
+    },
+    {
+      "word": "walk",
+      "meaning": "đi bộ, đi dạo"
+    },
+    {
+      "word": "band",
+      "meaning": "ban (nhạc)"
+    },
+    {
+      "word": "bat",
+      "meaning": "cây gậy dùng để chơi bóng chày"
+    },
+    {
+      "word": "CD",
+      "meaning": "đĩa CD"
+    },
+    {
+      "word": "cinema",
+      "meaning": "(bộ) phim"
+    },
+    {
+      "word": "comic",
+      "meaning": "truyện tranh"
+    },
+    {
+      "word": "dance",
+      "meaning": "nhảy / múa"
+    },
+    {
+      "word": "film",
+      "meaning": "phim"
+    },
+    {
+      "word": "fish",
+      "meaning": "câu cá"
+    },
+    {
+      "word": "go shopping",
+      "meaning": "đi mua sắm"
+    },
+    {
+      "word": "goal",
+      "meaning": "khung thành (môn bóng đá)"
+    },
+    {
+      "word": "holiday",
+      "meaning": "ngày nghỉ, kỳ nghỉ"
+    },
+    {
+      "word": "hop",
+      "meaning": "nhảy"
+    },
+    {
+      "word": "ice skates",
+      "meaning": "giày trượt băng"
+    },
+    {
+      "word": "ice skating",
+      "meaning": "trượt băng"
+    },
+    {
+      "word": "kick",
+      "meaning": "cú sút, đá (bóng)"
+    },
+    {
+      "word": "net",
+      "meaning": "lưới"
+    },
+    {
+      "word": "music",
+      "meaning": "âm nhạc"
+    },
+    {
+      "word": "party",
+      "meaning": "buổi tiệc"
+    },
+    {
+      "word": "player",
+      "meaning": "vận động viên / người chơi"
+    },
+    {
+      "word": "pool",
+      "meaning": "hồ (bơi)"
+    }
+  ],
+  "The World Around You": [
+    {
+      "word": "mountain",
+      "meaning": "núi"
+    },
+    {
+      "word": "plant",
+      "meaning": "cây"
+    },
+    {
+      "word": "river",
+      "meaning": "dòng sông"
+    },
+    {
+      "word": "road",
+      "meaning": "con đường"
+    },
+    {
+      "word": "rock",
+      "meaning": "hòn đá"
+    },
+    {
+      "word": "star",
+      "meaning": "ngôi sao"
+    },
+    {
+      "word": "town",
+      "meaning": "thị trấn"
+    },
+    {
+      "word": "village",
+      "meaning": "làng mạc"
+    },
+    {
+      "word": "wave",
+      "meaning": "(làn) sóng"
+    },
+    {
+      "word": "world",
+      "meaning": "thế giới"
+    },
+    {
+      "word": "waterfall",
+      "meaning": "thác nước"
+    },
+    {
+      "word": "city",
+      "meaning": "thành phố"
+    },
+    {
+      "word": "country",
+      "meaning": "đồng quê"
+    },
+    {
+      "word": "field",
+      "meaning": "cánh đồng"
+    },
+    {
+      "word": "forest",
+      "meaning": "khu rừng"
+    },
+    {
+      "word": "grass",
+      "meaning": "cỏ"
+    },
+    {
+      "word": "ground",
+      "meaning": "đất, mặt đất, khu đất"
+    },
+    {
+      "word": "island",
+      "meaning": "hòn đảo"
+    },
+    {
+      "word": "jungle",
+      "meaning": "rừng rậm"
+    },
+    {
+      "word": "lake",
+      "meaning": "hồ"
+    },
+    {
+      "word": "leaf / leaves",
+      "meaning": "một chiếc lá / những chiếc lá"
+    },
+    {
+      "word": "moon",
+      "meaning": "mặt trăng"
+    }
+  ]
+}
