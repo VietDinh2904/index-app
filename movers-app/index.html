@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Movers Vocabulary App</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mover Learning App</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>📚 Cambridge Movers Vocabulary</h1>
-    <label for="topicSelect">Choose a topic:</label>
-    <select id="topicSelect">
-      <option value="">-- Select --</option>
-    </select>
+  <header>
+    <h1>Mover Learning App</h1>
+    <nav>
+      <button id="btn-vocab">Vocabulary</button>
+      <button id="btn-grammar">Grammar</button>
+    </nav>
+  </header>
 
-    <div id="wordList" class="word-list"></div>
-  </div>
+  <main id="app">
+    <!-- Content will be injected by script.js -->
+  </main>
 
   <script src="script.js"></script>
 </body>
