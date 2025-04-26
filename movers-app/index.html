@@ -12,12 +12,22 @@
     <nav>
       <button id="btn-vocab">Vocabulary</button>
       <button id="btn-grammar">Grammar</button>
+      <button id="btn-practice">Practice</button>
     </nav>
+    <select id="theme-select"></select>
   </header>
 
-  <main id="app">
-    <!-- Content will be injected by script.js -->
-  </main>
+  <!-- Practice menu -->
+  <section id="practice-menu" class="hidden">
+    <h2>Choose a practice mode</h2>
+    <div class="practice-buttons">
+      <button id="mcq-mode">Multiple‑Choice Quiz</button>
+      <button id="typing-mode">Typing / Spelling</button>
+      <button id="race-mode">Type‑Race 30s</button>
+    </div>
+  </section>
+
+  <main id="app"></main>
 
   <script src="script.js"></script>
 </body>

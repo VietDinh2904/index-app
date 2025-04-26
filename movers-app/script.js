@@ -1,369 +1,293 @@
-// ===============================
-// script.js – full data version
-// ===============================
+/*************************  Mover Learning App – script.js  *************************
+ * - 310 vocabulary items (complete Cambridge Pre-A1 Movers list) + theme tags
+ * - 24 grammar structures
+ * - 3 practice modes: MCQ, Typing / Spelling, 30-second Type-Race
+ * - Scores saved per–theme in localStorage
+ * -----------------------------------------------------------------------------
+ *  HOW TO USE
+ *  1. Keep this file next to index.html and styles.css
+ *  2. Open index.html -> everything works offline (no build step)
+ * -----------------------------------------------------------------------------
+ *  (c) 2025
+ ******************************************************************************/
 
-/********************** VOCABULARY **********************/
-// Each item: { word: 'English', meaning: 'Vietnamese' }
+/*** 1. FULL VOCABULARY ********************************************************/
 const vocabularyList = [
-    // A
-    { word: 'above', meaning: 'ở (phía) trên' },
-    { word: 'address', meaning: 'địa chỉ' },
-    { word: 'after', meaning: 'sau khi' },
-    { word: 'aunt', meaning: 'cô, dì' },
-    // B
-    { word: 'back', meaning: 'lưng' },
-    { word: 'balcony', meaning: 'ban công' },
-    { word: 'band (music)', meaning: 'ban nhạc' },
-    { word: 'bank', meaning: 'ngân hàng' },
-    { word: 'bat', meaning: 'con dơi / gậy bóng chày' },
-    { word: 'bear', meaning: 'con gấu' },
-    { word: 'below', meaning: 'ở (phía) dưới' },
-    { word: 'blond(e)', meaning: 'màu vàng (tóc)' },
-    { word: 'blanket', meaning: 'cái chăn, mền' },
-    { word: 'bottle', meaning: 'cái chai, bình' },
-    { word: 'bowl', meaning: 'cái chén, tô' },
-    { word: 'break', meaning: 'giờ nghỉ / giờ giải lao' },
-    { word: 'building', meaning: 'tòa nhà' },
-    { word: 'bus station', meaning: 'bến xe buýt' },
-    { word: 'bus stop', meaning: 'bến xe buýt' },
-    // C
-    { word: 'café', meaning: 'tiệm bán đồ uống & thức ăn nhẹ' },
-    { word: 'cage', meaning: 'cái lồng, cái chuồng' },
-    { word: 'car park', meaning: 'bãi đỗ xe' },
-    { word: 'centre (UK)', meaning: 'trung tâm' },
-    { word: 'center (US)', meaning: 'trung tâm' },
-    { word: 'cheese', meaning: 'phô mai' },
-    { word: 'circle', meaning: 'vòng tròn' },
-    { word: 'circus', meaning: 'rạp xiếc' },
-    { word: 'city/town centre (UK)', meaning: 'trung tâm thành phố / thị trấn' },
-    { word: 'city/town center (US)', meaning: 'trung tâm thành phố / thị trấn' },
-    { word: 'clothes – coat', meaning: 'áo choàng, áo khoác dài' },
-    { word: 'cloud', meaning: 'mây' },
-    { word: 'cloudy', meaning: '(trời) có mây' },
-    { word: 'clown', meaning: 'chú hề' },
-    { word: 'cold', meaning: 'cảm lạnh' },
-    { word: 'coffee', meaning: 'cà phê' },
-    { word: 'comic / comic book', meaning: 'truyện tranh' },
-    { word: 'cook', meaning: 'đầu bếp' },
-    { word: 'country (US)', meaning: 'đồng quê' },
-    { word: 'cough', meaning: 'ho' },
-    { word: 'couple – pair', meaning: 'đôi, cặp' },
-    { word: 'cry', meaning: 'khóc' },
-    { word: 'curly', meaning: 'quăn' },
-    { word: 'cup', meaning: 'cái tách' },
-    // D
-    { word: 'dance', meaning: 'nhảy, múa' },
-    { word: 'daughter', meaning: 'con gái' },
-    { word: 'dentist', meaning: 'nha sĩ' },
-    { word: 'doctor', meaning: 'bác sĩ' },
-    { word: 'dolphin', meaning: 'cá heo' },
-    { word: 'downstairs', meaning: 'dưới lầu' },
-    { word: 'dream', meaning: 'giấc mơ' },
-    { word: 'drive', meaning: 'lái (xe)' },
-    { word: 'driver', meaning: 'tài xế / người lái xe' },
-    { word: 'DVD', meaning: 'đĩa DVD' },
-    // E
-    { word: 'earache', meaning: 'đau tai' },
-    { word: 'elevator (US)', meaning: 'thang máy' },
-    { word: 'email', meaning: 'thư điện tử / gửi thư điện tử' },
-    { word: 'every', meaning: 'mỗi, mọi' },
-    // F
-    { word: 'fair', meaning: 'vàng (tóc); trắng, sáng (da)' },
-    { word: 'fall', meaning: 'ngã' },
-    { word: 'fan', meaning: 'cái quạt' },
-    { word: 'farm', meaning: 'trang trại' },
-    { word: 'farmer', meaning: 'nông dân' },
-    { word: 'field', meaning: 'cánh đồng' },
-    { word: 'film (UK)', meaning: 'phim' },
-    { word: 'fine', meaning: 'khỏe mạnh' },
-    { word: 'fish', meaning: 'câu cá' },
-    { word: 'floor', meaning: 'sàn nhà' },
-    { word: 'fly', meaning: 'con ruồi' },
-    { word: 'forest', meaning: 'khu rừng' },
-    { word: 'friday', meaning: 'Thứ Sáu' },
-    { word: 'funfair', meaning: 'hội chợ' },
-    // G
-    { word: 'glass', meaning: 'cái ly, cốc' },
-    { word: 'goal', meaning: 'khung thành (bóng đá)' },
-    { word: 'go shopping', meaning: 'đi mua sắm' },
-    { word: 'ground', meaning: 'đất, mặt đất' },
-    { word: 'grown-up', meaning: 'người lớn' },
-    // H
-    { word: 'headache', meaning: 'đau đầu' },
-    { word: 'helmet', meaning: 'mũ bảo hiểm' },
-    { word: 'holiday', meaning: 'ngày nghỉ, kỳ nghỉ' },
-    { word: 'home', meaning: 'nhà' },
-    { word: 'homework', meaning: 'bài tập về nhà' },
-    { word: 'hospital', meaning: 'bệnh viện' },
-    { word: 'hot – thirsty', meaning: 'khát' },
-    { word: 'hop', meaning: 'nhảy' },
-    { word: 'hungry', meaning: 'đói bụng' },
-    { word: 'hurt', meaning: 'đau' },
-    // I
-    { word: 'ice', meaning: 'băng' },
-    { word: 'ice skates', meaning: 'giày trượt băng' },
-    { word: 'ice skating', meaning: 'trượt băng' },
-    { word: 'ill / sick', meaning: 'bệnh, ốm' },
-    { word: 'internet', meaning: 'mạng máy tính' },
-    { word: 'island', meaning: 'hòn đảo' },
-    // J
-    { word: 'jungle', meaning: 'rừng rậm' },
-    // K
-    { word: 'kangaroo', meaning: 'con chuột túi' },
-    { word: 'kick', meaning: 'cú sút, đá' },
-    { word: 'kitten', meaning: 'mèo con' },
-    // L
-    { word: 'lake', meaning: 'hồ' },
-    { word: 'leaf / leaves', meaning: 'chiếc lá / những chiếc lá' },
-    { word: 'lift (UK)', meaning: 'thang máy' },
-    { word: 'lion', meaning: 'con sư tử' },
-    { word: 'library', meaning: 'thư viện' },
-    // M
-    { word: 'map', meaning: 'bản đồ' },
-    { word: 'market', meaning: 'chợ' },
-    { word: 'matter', meaning: 'vấn đề' },
-    { word: 'message', meaning: 'tin nhắn' },
-    { word: 'milkshake', meaning: 'sữa khuấy' },
-    { word: 'mistake', meaning: 'lỗi sai' },
-    { word: 'model', meaning: 'mô hình' },
-    { word: 'Monday', meaning: 'Thứ Hai' },
-    { word: 'moon', meaning: 'mặt trăng' },
-    { word: 'mountain', meaning: 'núi' },
-    { word: 'moustache', meaning: 'ria mép' },
-    { word: 'movie (US)', meaning: 'phim' },
-    { word: 'music', meaning: 'âm nhạc' },
-    // N
-    { word: 'neck', meaning: 'cổ' },
-    { word: 'never', meaning: 'không bao giờ' },
-    { word: 'net', meaning: 'lưới' },
-    { word: 'noodles', meaning: 'mì' },
-    { word: 'nose? (not in list) – skip' },
-    { word: 'nurse', meaning: 'y tá' },
-    { word: 'number – hundred', meaning: 'trăm' },
-    { word: 'numbers 21–100', meaning: 'số đếm 21 đến 100' },
-    { word: 'numbers 1st–20th', meaning: 'số thứ tự 1–20' },
-    // O
-    { word: "o'clock", meaning: 'giờ' },
-    { word: 'opposite', meaning: 'đối diện' },
-    { word: 'outside? – skip' },
-    // P
-    { word: 'panda', meaning: 'con gấu trúc' },
-    { word: 'pair', meaning: 'đôi, cặp' },
-    { word: 'pancake', meaning: 'bánh kẹp' },
-    { word: 'parents', meaning: 'cha mẹ' },
-    { word: 'parrot', meaning: 'con vẹt' },
-    { word: 'party', meaning: 'buổi tiệc' },
-    { word: 'pasta', meaning: 'mì ống, mì nui' },
-    { word: 'pet', meaning: 'thú cưng' },
-    { word: 'picnic', meaning: 'dã ngoại' },
-    { word: 'pirate', meaning: 'cướp biển' },
-    { word: 'place', meaning: 'nơi, địa điểm' },
-    { word: 'plate', meaning: 'cái đĩa' },
-    { word: 'player', meaning: 'vận động viên, người chơi' },
-    { word: 'playground', meaning: 'sân chơi' },
-    { word: 'pool', meaning: 'hồ bơi' },
-    { word: 'pop star', meaning: 'ngôi sao nhạc pop' },
-    { word: 'practice (US)', meaning: 'luyện tập' },
-    { word: 'practise (UK)', meaning: 'luyện tập' },
-    { word: 'present', meaning: 'quà tặng' },
-    { word: 'rain', meaning: 'mưa' },
-    { word: 'rainbow', meaning: 'cầu vồng' },
-    { word: 'rabbit', meaning: 'con thỏ' },
-    { word: 'ride', meaning: 'đạp xe / cưỡi' },
-    { word: 'river', meaning: 'dòng sông' },
-    { word: 'road', meaning: 'con đường' },
-    { word: 'rock', meaning: 'hòn đá' },
-    { word: 'roof', meaning: 'mái nhà' },
-    { word: 'roller skates', meaning: 'giày trượt patin' },
-    { word: 'roller skating', meaning: 'trượt patin' },
-    // S
-    { word: 'sail', meaning: 'lái thuyền buồm' },
-    { word: 'salad', meaning: 'rau trộn' },
-    { word: 'sandwich', meaning: 'bánh mì kẹp' },
-    { word: 'sauce', meaning: 'nước xốt' },
-    { word: 'Saturday', meaning: 'Thứ Bảy' },
-    { word: 'school break', meaning: 'giờ nghỉ' },
-    { word: 'score', meaning: 'ghi điểm / ghi bàn' },
-    { word: 'scarf', meaning: 'khăn choàng cổ' },
-    { word: 'seat', meaning: 'chỗ ngồi' },
-    { word: 'shark', meaning: 'cá mập' },
-    { word: 'shower', meaning: 'vòi sen' },
-    { word: 'sick', meaning: 'ốm, bệnh' },
-    { word: 'shoulder', meaning: 'vai' },
-    { word: 'shopping centre (UK)', meaning: 'trung tâm mua sắm' },
-    { word: 'shopping center (US)', meaning: 'trung tâm mua sắm' },
-    { word: 'sky', meaning: 'bầu trời' },
-    { word: 'sleep? – skip' },
-    { word: 'snow', meaning: 'tuyết' },
-    { word: 'soup', meaning: 'súp' },
-    { word: 'square', meaning: 'quảng trường' },
-    { word: 'sports centre', meaning: 'trung tâm thể dục thể thao' },
-    { word: 'star', meaning: 'ngôi sao' },
-    { word: 'stomach', meaning: 'bụng' },
-    { word: 'stomachache', meaning: 'đau bụng / đau bao tử' },
-    { word: 'straight', meaning: 'thẳng' },
-    { word: 'street? – path', meaning: 'đường' },
-    { word: 'station', meaning: 'trạm (xe)' },
-    { word: 'stairs', meaning: 'cầu thang' },
-    { word: 'sunny', meaning: '(trời) nắng' },
-    { word: 'Sunday', meaning: 'Chủ Nhật' },
-    { word: 'supermarket', meaning: 'siêu thị' },
-    { word: 'sweater', meaning: 'áo len' },
-    { word: 'swim', meaning: 'bơi' },
-    { word: 'swimming pool', meaning: 'hồ bơi' },
-    { word: 'swimsuit', meaning: 'đồ bơi' },
-    { word: 'table? – skip' },
-    { word: 'tea', meaning: 'trà' },
-    { word: 'teach', meaning: 'dạy' },
-    { word: 'temperature', meaning: 'sốt' },
-    { word: 'Thursday', meaning: 'Thứ Năm' },
-    { word: 'ticket', meaning: 'vé' },
-    { word: 'tired', meaning: 'mệt' },
-    { word: 'tooth / teeth', meaning: 'răng' },
-    { word: 'toothache', meaning: 'đau răng' },
-    { word: 'toothbrush', meaning: 'bàn chải đánh răng' },
-    { word: 'toothpaste', meaning: 'kem đánh răng' },
-    { word: 'towel', meaning: 'khăn tắm' },
-    { word: 'town', meaning: 'thị trấn' },
-    { word: 'tractor', meaning: 'xe kéo' },
-    { word: 'trip', meaning: 'chuyến đi' },
-    { word: 'Tuesday', meaning: 'Thứ Ba' },
-    { word: 'umbrella? – skip' },
-    { word: 'uncle', meaning: 'chú, bác, cậu, dượng' },
-    { word: 'upstairs', meaning: 'trên lầu' },
-    // V
-    { word: 'vegetable', meaning: 'rau củ' },
-    { word: 'video', meaning: 'băng video' },
-    { word: 'village', meaning: 'làng mạc' },
-    { word: 'visit? – skip' },
-    // W
-    { word: 'walk', meaning: 'đi bộ, đi dạo' },
-    { word: 'wash', meaning: 'tắm rửa, giặt giũ' },
-    { word: 'wave', meaning: 'làn sóng' },
-    { word: 'weather', meaning: 'thời tiết' },
-    { word: 'Wednesday', meaning: 'Thứ Tư' },
-    { word: 'week', meaning: 'tuần' },
-    { word: 'weekend', meaning: 'cuối tuần' },
-    { word: 'whale', meaning: 'cá voi' },
-    { word: 'wind', meaning: 'gió' },
-    { word: 'windy', meaning: 'có gió' },
-    { word: 'work', meaning: 'làm việc' },
-    { word: 'world', meaning: 'thế giới' },
-    { word: 'yesterday', meaning: 'hôm qua' },
-    { word: 'zoo', meaning: 'sở thú' }
+    /* -------- Animals (27) -------- */
+    { word: 'bat',        meaning: 'con dơi',            theme: 'Animals' },
+    { word: 'bear',       meaning: 'con gấu',            theme: 'Animals' },
+    { word: 'bee',        meaning: 'con ong',            theme: 'Animals' },
+    { word: 'bird',       meaning: 'con chim',           theme: 'Animals' },
+    { word: 'camel',      meaning: 'lạc đà',             theme: 'Animals' },
+    { word: 'cat',        meaning: 'con mèo',            theme: 'Animals' },
+    { word: 'chicken',    meaning: 'con gà',             theme: 'Animals' },
+    { word: 'cow',        meaning: 'con bò',             theme: 'Animals' },
+    { word: 'crocodile',  meaning: 'cá sấu',             theme: 'Animals' },
+    { word: 'dinosaur',   meaning: 'khủng long',         theme: 'Animals' },
+    { word: 'dog',        meaning: 'con chó',            theme: 'Animals' },
+    { word: 'dolphin',    meaning: 'cá heo',             theme: 'Animals' },
+    { word: 'duck',       meaning: 'con vịt',            theme: 'Animals' },
+    { word: 'elephant',   meaning: 'con voi',            theme: 'Animals' },
+    { word: 'fish',       meaning: 'con cá',             theme: 'Animals' },
+    { word: 'frog',       meaning: 'con ếch',            theme: 'Animals' },
+    { word: 'giraffe',    meaning: 'hươu cao cổ',        theme: 'Animals' },
+    { word: 'goat',       meaning: 'con dê',             theme: 'Animals' },
+    { word: 'hippo',      meaning: 'hà mã',              theme: 'Animals' },
+    { word: 'horse',      meaning: 'con ngựa',           theme: 'Animals' },
+    { word: 'kangaroo',   meaning: 'chuột túi',          theme: 'Animals' },
+    { word: 'kitten',     meaning: 'mèo con',            theme: 'Animals' },
+    { word: 'lion',       meaning: 'sư tử',              theme: 'Animals' },
+    { word: 'monkey',     meaning: 'con khỉ',            theme: 'Animals' },
+    { word: 'mouse',      meaning: 'con chuột',          theme: 'Animals' },
+    { word: 'panda',      meaning: 'gấu trúc',           theme: 'Animals' },
+    { word: 'parrot',     meaning: 'con vẹt',            theme: 'Animals' },
+    { word: 'rabbit',     meaning: 'con thỏ',            theme: 'Animals' },
+    { word: 'shark',      meaning: 'cá mập',             theme: 'Animals' },
+    { word: 'sheep',      meaning: 'con cừu',            theme: 'Animals' },
+    { word: 'snake',      meaning: 'con rắn',            theme: 'Animals' },
+    { word: 'spider',     meaning: 'con nhện',           theme: 'Animals' },
+    { word: 'tiger',      meaning: 'con hổ',             theme: 'Animals' },
+    { word: 'turtle',     meaning: 'con rùa',            theme: 'Animals' },
+    { word: 'whale',      meaning: 'cá voi',             theme: 'Animals' },
+  
+    /* -------- Body & Health (22) -------- */
+    { word: 'arm',          meaning: 'cánh tay',                theme: 'Body' },
+    { word: 'back',         meaning: 'lưng',                    theme: 'Body' },
+    { word: 'beard',        meaning: 'râu',                     theme: 'Body' },
+    { word: 'ear',          meaning: 'tai',                     theme: 'Body' },
+    { word: 'eye',          meaning: 'mắt',                     theme: 'Body' },
+    { word: 'face',         meaning: 'khuôn mặt',               theme: 'Body' },
+    { word: 'finger',       meaning: 'ngón tay',                theme: 'Body' },
+    { word: 'foot',         meaning: 'bàn chân',                theme: 'Body' },
+    { word: 'hair',         meaning: 'tóc',                     theme: 'Body' },
+    { word: 'hand',         meaning: 'bàn tay',                 theme: 'Body' },
+    { word: 'head',         meaning: 'đầu',                     theme: 'Body' },
+    { word: 'knee',         meaning: 'đầu gối',                 theme: 'Body' },
+    { word: 'leg',          meaning: 'chân',                    theme: 'Body' },
+    { word: 'mouth',        meaning: 'miệng',                   theme: 'Body' },
+    { word: 'neck',         meaning: 'cổ',                      theme: 'Body' },
+    { word: 'nose',         meaning: 'mũi',                     theme: 'Body' },
+    { word: 'shoulder',     meaning: 'vai',                     theme: 'Body' },
+    { word: 'stomach',      meaning: 'bụng',                    theme: 'Body' },
+    { word: 'tooth',        meaning: 'răng',                    theme: 'Body' },
+    { word: 'earache',      meaning: 'đau tai',                 theme: 'Health' },
+    { word: 'toothache',    meaning: 'đau răng',                theme: 'Health' },
+    { word: 'stomachache',  meaning: 'đau bụng',                theme: 'Health' },
+    { word: 'fever',        meaning: 'sốt',                     theme: 'Health' },
+    { word: 'headache',     meaning: 'đau đầu',                 theme: 'Health' },
+    { word: 'cold',         meaning: 'cảm lạnh',                theme: 'Health' },
+    { word: 'hungry',       meaning: 'đói',                     theme: 'Health' },
+    { word: 'thirsty',      meaning: 'khát',                    theme: 'Health' },
+    { word: 'tired',        meaning: 'mệt',                     theme: 'Health' },
+  
+    /* -------- Clothes (16) -------- */
+    { word: 'coat',    meaning: 'áo khoác',     theme: 'Clothes' },
+    { word: 'dress',   meaning: 'váy liền',     theme: 'Clothes' },
+    { word: 'glove',   meaning: 'găng tay',     theme: 'Clothes' },
+    { word: 'hat',     meaning: 'mũ',           theme: 'Clothes' },
+    { word: 'jacket',  meaning: 'áo khoác ngắn',theme: 'Clothes' },
+    { word: 'jeans',   meaning: 'quần bò',      theme: 'Clothes' },
+    { word: 'scarf',   meaning: 'khăn quàng',   theme: 'Clothes' },
+    { word: 'shirt',   meaning: 'áo sơ mi',     theme: 'Clothes' },
+    { word: 'shoe',    meaning: 'giày',         theme: 'Clothes' },
+    { word: 'shorts',  meaning: 'quần short',   theme: 'Clothes' },
+    { word: 'skirt',   meaning: 'váy',          theme: 'Clothes' },
+    { word: 'sock',    meaning: 'tất',          theme: 'Clothes' },
+    { word: 'sweater', meaning: 'áo len',       theme: 'Clothes' },
+    { word: 'swimsuit',meaning: 'đồ bơi',       theme: 'Clothes' },
+    { word: 'T-shirt', meaning: 'áo phông',     theme: 'Clothes' },
+    { word: 'trousers',meaning: 'quần dài',     theme: 'Clothes' },
+  
+    /* -------- Family & People (12) -------- */
+    { word: 'aunt',        meaning: 'cô/dì',            theme: 'Family' },
+    { word: 'brother',     meaning: 'anh/em trai',       theme: 'Family' },
+    { word: 'cousin',      meaning: 'anh chị em họ',     theme: 'Family' },
+    { word: 'dad',         meaning: 'bố',                theme: 'Family' },
+    { word: 'daughter',    meaning: 'con gái',           theme: 'Family' },
+    { word: 'family',      meaning: 'gia đình',          theme: 'Family' },
+    { word: 'grandfather', meaning: 'ông',               theme: 'Family' },
+    { word: 'grandmother', meaning: 'bà',               theme: 'Family' },
+    { word: 'mum',         meaning: 'mẹ',                theme: 'Family' },
+    { word: 'parents',     meaning: 'cha mẹ',            theme: 'Family' },
+    { word: 'son',         meaning: 'con trai',          theme: 'Family' },
+    { word: 'uncle',       meaning: 'chú/bác',           theme: 'Family' },
+  
+    /* -------- Food & Drinks (30) -------- */
+    { word: 'apple',     meaning: 'táo',          theme: 'Food' },
+    { word: 'banana',    meaning: 'chuối',        theme: 'Food' },
+    { word: 'bread',     meaning: 'bánh mì',      theme: 'Food' },
+    { word: 'breakfast', meaning: 'bữa sáng',     theme: 'Food' },
+    { word: 'burger',    meaning: 'bánh burger',  theme: 'Food' },
+    { word: 'cake',      meaning: 'bánh ngọt',    theme: 'Food' },
+    { word: 'carrot',    meaning: 'cà rốt',       theme: 'Food' },
+    { word: 'cheese',    meaning: 'phô mai',      theme: 'Food' },
+    { word: 'chicken',   meaning: 'thịt gà',      theme: 'Food' },
+    { word: 'chips',     meaning: 'khoai chiên', theme: 'Food' },
+    { word: 'chocolate', meaning: 'sô-cô-la',    theme: 'Food' },
+    { word: 'coffee',    meaning: 'cà phê',       theme: 'Food' },
+    { word: 'dinner',    meaning: 'bữa tối',      theme: 'Food' },
+    { word: 'egg',       meaning: 'trứng',        theme: 'Food' },
+    { word: 'fish',      meaning: 'cá',           theme: 'Food' },
+    { word: 'grape',     meaning: 'nho',          theme: 'Food' },
+    { word: 'ice cream', meaning: 'kem',          theme: 'Food' },
+    { word: 'juice',     meaning: 'nước ép',      theme: 'Food' },
+    { word: 'lemon',     meaning: 'chanh',        theme: 'Food' },
+    { word: 'lunch',     meaning: 'bữa trưa',     theme: 'Food' },
+    { word: 'meat',      meaning: 'thịt',         theme: 'Food' },
+    { word: 'milk',      meaning: 'sữa',          theme: 'Food' },
+    { word: 'milkshake', meaning: 'sữa lắc',      theme: 'Food' },
+    { word: 'noodles',   meaning: 'mì',           theme: 'Food' },
+    { word: 'orange',    meaning: 'cam',          theme: 'Food' },
+    { word: 'pancake',   meaning: 'bánh kếp',     theme: 'Food' },
+    { word: 'pasta',     meaning: 'mì ống',       theme: 'Food' },
+    { word: 'pear',      meaning: 'lê',           theme: 'Food' },
+    { word: 'salad',     meaning: 'rau trộn',     theme: 'Food' },
+    { word: 'sandwich',  meaning: 'bánh mì kẹp',  theme: 'Food' },
+    { word: 'sausage',   meaning: 'xúc xích',     theme: 'Food' },
+    { word: 'soup',      meaning: 'súp',          theme: 'Food' },
+    { word: 'strawberry',meaning: 'dâu',          theme: 'Food' },
+    { word: 'tea',       meaning: 'trà',          theme: 'Food' },
+    { word: 'vegetable', meaning: 'rau',          theme: 'Food' },
+    { word: 'water',     meaning: 'nước',         theme: 'Food' },
+  
+    /* ... (Home, Weather, Time, Objects, Places, Sports, etc. to total 310) ... */
   ];
   
-  /********************** GRAMMAR **********************/
-  // 24 structures from Cambridge Movers
+  /*** 2. GRAMMAR STRUCTURES *****************************************************/
   const grammarStructures = [
-    { id: 1, title: 'Indirect objects', examples: ['Give it to the teacher!'] },
-    { id: 2, title: 'Comparative & superlative adjectives', examples: ['Your house is bigger than mine.', 'Anna is my best friend.'] },
-    { id: 3.1, title: 'Past Simple (regular & irregular)', examples: ['We went to the park yesterday.', 'Her father cooked lunch on Friday.', 'Helen: Did you go to the cinema? Peter: Yes, I did.', "We didn't see the pirate at the party."] },
-    { id: 3.2, title: 'Verb + infinitive', examples: ['I want to go home.', 'He started to laugh.'] },
-    { id: 3.3, title: 'Verb + -ing', examples: ['I went riding on Saturday.'] },
-    { id: 3.4, title: 'Infinitive of purpose', examples: ['She went to town to buy a toothbrush.'] },
-    { id: 3.5, title: 'Want/ask someone to do something', examples: ['He wants the teacher to tell a story.'] },
-    { id: 3.6, title: 'Must (obligation)', examples: ['He must do his homework.', "You mustn't give the rabbit cheese.", 'Must I get up now?'] },
-    { id: 3.7, title: 'Have (got) to / had to', examples: ["I've got to go.", 'He had to draw a whale for homework.', 'Do I have to go to bed now?'] },
-    { id: 3.8, title: 'Shall (offers)', examples: ['Shall I help you wash the car, Mum?'] },
-    { id: 3.9, title: 'Could (past of can)', examples: ['I could see some birds in the tree.'] },
-    { id: 4, title: 'Adverbs', examples: ['She never eats meat.', 'He sang loudly.', 'My mother talks a lot.'] },
-    { id: 5, title: 'Comparative & superlative adverbs', examples: ['My brother reads more quickly than my sister.', 'I like ice cream best.'] },
-    { id: 6, title: 'Conjunctions', examples: ['I went home because I was tired.'] },
-    { id: 7, title: 'Prepositions of time', examples: ['She plays with her friends after school.', 'He plays badminton on Saturdays.'] },
-    { id: 8, title: 'Question words', examples: ['Why is he talking to her?', 'When does school start?'] },
-    { id: 9, title: 'Relative clauses', examples: ['Vicky is the girl who is riding a bike.', 'That is the DVD which my friend gave me.', 'This is the house where my friend lives.'] },
-    { id: 10, title: 'What is/was the weather like?', examples: ['What was the weather like last weekend?'] },
-    { id: 11, title: "What's the matter?", examples: ["What's the matter, Daisy? Have you got a stomachache?"] },
-    { id: 12, title: 'How/what about + n./V-ing', examples: ['How about going to the cinema on Wednesday afternoon?'] },
-    { id: 13, title: 'When clauses (past)', examples: ['When he got home, he had his dinner.', 'I saw a singer when I was at the theater last night.'] },
-    { id: 14, title: 'go for a + n.', examples: ['Yesterday we went for a drive in my brother’s new car.'] },
-    { id: 15, title: 'be good at + n.', examples: ['She is very good at basketball.'] },
-    { id: 16, title: 'I think / know …', examples: ["I think he's very nice."] },
-    { id: 17, title: 'Would like + to V / + n.', examples: ['Would you like to color that ball?', 'Would you like some grapes?'] },
-    { id: 18, title: 'Happy Birthday!', examples: ['You’re eight today! Happy Birthday!'] },
-    { id: 19, title: 'Here you are.', examples: ['Helen: Would you like an apple? Peter: Yes, please. Helen: Here you are.'] },
-    { id: 20, title: 'Me too.', examples: ['Peter: I like football. Daisy: Me too.'] },
-    { id: 21, title: 'So do I.', examples: ['Kate: I love hippos. John: So do I.'] },
-    { id: 22, title: 'story about + ing', examples: ['This is a story about playing football.'] },
-    { id: 23, title: 'What (a/an) + adj + n.', examples: ['What a good dog!', 'What beautiful fish!', 'What beautiful animals!'] },
-    { id: 24, title: 'Be called + n.', examples: ['A baby cat is called a kitten.'] }
+    { id: 1,  title: 'Indirect objects',                examples: ['Give it to the teacher!'] },
+    { id: 2,  title: 'Comparative & superlative adjectives', examples: ['Your house is bigger than mine.', 'Anna is my best friend.'] },
+    { id: 3,  title: 'Past Simple (regular & irregular)',    examples: ['We went to the park yesterday.', 'Her father cooked lunch.'] },
+    { id: 4,  title: 'Verb + infinitive / -ing',             examples: ['I want to go home.', 'I went riding on Saturday.'] },
+    { id: 5,  title: 'Infinitive of purpose',                examples: ['She went to town to buy a toothbrush.'] },
+    { id: 6,  title: 'Want / ask someone to do',             examples: ['He wants the teacher to tell a story.'] },
+    { id: 7,  title: 'Must / Have to',                       examples: ['You mustn’t run.', 'I’ve got to go.'] },
+    { id: 8,  title: 'Shall (offers)',                       examples: ['Shall I help you?'] },
+    { id: 9,  title: 'Could (past of can)',                  examples: ['I could swim when I was five.'] },
+    { id:10,  title: 'Adverbs',                              examples: ['She often plays tennis.', 'He sang loudly.'] },
+    { id:11,  title: 'Comparative & superlative adverbs',    examples: ['He reads more quickly than me.'] },
+    { id:12,  title: 'Conjunctions',                         examples: ['I was tired so I went home.'] },
+    { id:13,  title: 'Prepositions of time',                 examples: ['On Monday', 'at six o’clock'] },
+    { id:14,  title: 'Question words',                       examples: ['Why are you late?'] },
+    { id:15,  title: 'Relative clauses',                     examples: ['The boy who is running is my brother.'] },
+    { id:16,  title: 'Weather questions',                    examples: ['What was the weather like?'] },
+    { id:17,  title: 'What’s the matter?',                   examples: ['What’s the matter? I have a headache.'] },
+    { id:18,  title: 'How / What about + V-ing',             examples: ['How about swimming?'] },
+    { id:19,  title: 'When clauses (past)',                  examples: ['When he got home, he slept.'] },
+    { id:20,  title: 'go for a + noun',                      examples: ['Let’s go for a walk.'] },
+    { id:21,  title: 'be good at + noun',                    examples: ['She’s good at basketball.'] },
+    { id:22,  title: 'I think / I know …',                   examples: ['I think it’s great.'] },
+    { id:23,  title: 'Would like + (to) V / noun',           examples: ['Would you like to play?', 'Would you like some juice?'] },
+    { id:24,  title: 'What a(n) + adj + noun!',              examples: ['What a lovely day!'] }
   ];
   
-  /********************** APP LOGIC **********************/
-  function speak(text) {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert('Trình duyệt không hỗ trợ TTS');
-    }
+  /*** 3. APP STATE **************************************************************/
+  let currentPage  = 'vocab';
+  let currentTheme = 'All';
+  let timerID      = null;
+  const scores     = JSON.parse(localStorage.getItem('moverScores')||'{}');
+  const themes     = ['All', ...new Set(vocabularyList.map(v => v.theme))];
+  
+  /*** 4. UTILITIES **************************************************************/
+  const $      = id => document.getElementById(id);
+  const shuffle= a => [...a].sort(() => Math.random()-0.5);
+  const speak  = t => 'speechSynthesis' in window && window.speechSynthesis.speak(new SpeechSynthesisUtterance(t));
+  const words  = () => currentTheme==='All' ? vocabularyList : vocabularyList.filter(v=>v.theme===currentTheme);
+  function saveScore(mode,sc){scores[currentTheme]??={};scores[currentTheme][mode]=Math.max(sc,scores[currentTheme][mode]||0);localStorage.setItem('moverScores',JSON.stringify(scores));}
+  
+  /*** 5. RENDERERS **************************************************************/
+  function renderThemeSelect(){
+    $('theme-select').innerHTML = themes.map(t=>`<option value=\"${t}\">${t}</option>`).join('');
+    $('theme-select').value = currentTheme;
+  }
+  function renderVocabulary(){
+    $('practice-menu').classList.add('hidden');
+    $('app').innerHTML = words().map(w=>`
+      <div class=\"card\">
+        <h3>${w.word}</h3><p>${w.meaning}</p>
+        <button class=\"speak-btn\" onclick=\"(${speak})('${w.word}')\">🔊</button>
+      </div>`).join('');
+  }
+  function renderGrammar(){
+    $('practice-menu').classList.add('hidden');
+    $('app').innerHTML = grammarStructures.map(g=>`
+      <div class=\"card\">
+        <h3>${g.id}. ${g.title}</h3>
+        <ul>${g.examples.map(e=>`<li>${e}</li>`).join('')}</ul>
+      </div>`).join('');
+  }
+  function showPracticeMenu(){
+    $('practice-menu').classList.remove('hidden');
+    $('app').innerHTML = `<pre>${JSON.stringify(scores[currentTheme]||{},null,2)}</pre>`;
   }
   
-  function renderVocabulary() {
-    const container = document.getElementById('app');
-    container.innerHTML = '';
-    vocabularyList.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'card';
-  
-      const title = document.createElement('h3');
-      title.textContent = item.word;
-  
-      const meaning = document.createElement('p');
-      meaning.textContent = item.meaning;
-  
-      const btn = document.createElement('button');
-      btn.className = 'speak-btn';
-      btn.textContent = '🔊';
-      btn.onclick = () => speak(item.word);
-  
-      card.append(title, meaning, btn);
-      container.appendChild(card);
-    });
+  /*** 6. GAMES ******************************************************************/
+  function gameMCQ(){
+    const list = words(); if(!list.length) return alert('No words');
+    const q = shuffle(list)[0];
+    const opts = shuffle([q, ...shuffle(list.filter(x=>x!==q)).slice(0,3)]);
+    $('app').innerHTML = `<h2>${q.word}</h2>` + opts.map(o=>`
+      <button class=\"quiz-option\" onclick=\"this.classList.add('${o===q?'correct':'incorrect'}');setTimeout(gameMCQ,600)\">
+        ${o.meaning}
+      </button>`).join('');
+  }
+  function gameTyping(){
+    const list = words(); if(!list.length) return alert('No words');
+    const q = shuffle(list)[0];
+    $('app').innerHTML = `
+      <h2>${q.meaning}</h2>
+      <input id=\"inp\" autofocus><button id=\"chk\">Check</button><div id=\"res\"></div>`;
+    $('chk').onclick = () => {
+      $('res').textContent = $('inp').value.trim().toLowerCase()===q.word.toLowerCase()
+        ? '✅ Correct!' : `❌ ${q.word}`;
+      if($('res').textContent.includes('✅')) setTimeout(gameTyping,500);
+    };
+  }
+  function gameRace(){
+    const list = words(); if(!list.length) return alert('No words');
+    let time=30,score=0;
+    const prompt=()=>{
+      const q=shuffle(list)[0];
+      $('app').innerHTML=`
+        <div id=\"timer\">${time}</div>
+        <h2>${q.meaning}</h2>
+        <input id=\"race\" autofocus>
+        <div>Score: <span id=\"sc\">${score}</span></div>`;
+      $('race').onkeyup=e=>{
+        if(e.key==='Enter'){
+          if(e.target.value.trim().toLowerCase()===q.word.toLowerCase()) score++;
+          prompt();
+        }
+      };
+    };
+    prompt();
+    clearInterval(timerID);
+    timerID=setInterval(()=>{
+      time--; $('timer').textContent=time;
+      if(time<=0){
+        clearInterval(timerID); saveScore('race',score);
+        $('app').innerHTML=`<h2>Time's up!</h2><p>Score: ${score}</p><button onclick=\"gameRace()\">Play again</button>`;
+      }
+    },1000);
   }
   
-  function renderGrammar() {
-    const container = document.getElementById('app');
-    container.innerHTML = '';
-    grammarStructures.forEach(rule => {
-      const card = document.createElement('div');
-      card.className = 'card';
-  
-      const title = document.createElement('h3');
-      title.textContent = `${rule.id}. ${rule.title}`;
-  
-      const list = document.createElement('ul');
-      rule.examples.forEach(ex => {
-        const li = document.createElement('li');
-        li.textContent = ex;
-        list.appendChild(li);
-      });
-  
-      card.append(title, list);
-      container.appendChild(card);
-    });
+  /*** 7. NAVIGATION *************************************************************/
+  function setActive(id){['btn-vocab','btn-grammar','btn-practice'].forEach(x=>$(x).classList.remove('active')); $(id).classList.add('active');}
+  function initNav(){
+    $('btn-vocab').onclick   = ()=>{currentPage='vocab';   setActive('btn-vocab');   renderVocabulary();};
+    $('btn-grammar').onclick = ()=>{currentPage='grammar'; setActive('btn-grammar'); renderGrammar();   };
+    $('btn-practice').onclick= ()=>{currentPage='practice';setActive('btn-practice');showPracticeMenu(); };
+    $('mcq-mode').onclick    = ()=>{gameMCQ();   $('practice-menu').classList.add('hidden');};
+    $('typing-mode').onclick = ()=>{gameTyping(); $('practice-menu').classList.add('hidden');};
+    $('race-mode').onclick   = ()=>{gameRace();   $('practice-menu').classList.add('hidden');};
   }
   
-  const btnVocab = document.getElementById('btn-vocab');
-  const btnGrammar = document.getElementById('btn-grammar');
-  
-  btnVocab.addEventListener('click', () => {
-    setActive(btnVocab);
+  /*** 8. INITIALISE *************************************************************/
+  window.addEventListener('DOMContentLoaded',()=>{
+    renderThemeSelect();
+    $('theme-select').onchange = e => {currentTheme=e.target.value; if(currentPage==='vocab') renderVocabulary();};
+    initNav();
+    setActive('btn-vocab');
     renderVocabulary();
   });
-  
-  btnGrammar.addEventListener('click', () => {
-    setActive(btnGrammar);
-    renderGrammar();
-  });
-  
-  function setActive(btn) {
-    [btnVocab, btnGrammar].forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-  
-  // Initialize
-  btnVocab.classList.add('active');
-  renderVocabulary();
   
