@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mover Learning App</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <header>
-    <h1>Mover Learning App</h1>
-    <nav>
+  <!-- ===== HEADER ======================================================= -->
+  <header class="app-header">
+    <h1 class="logo">Mover Learning App</h1>
+
+    <nav class="main-nav">
       <button id="btn-vocab">Vocabulary</button>
       <button id="btn-grammar">Grammar</button>
       <button id="btn-practice">Practice</button>
     </nav>
+
     <select id="theme-select"></select>
+
+    <div id="scoreboard" class="hidden">
+      ⏱ <span id="sb-time">60</span>s&nbsp;|&nbsp;
+      🔢 Score: <span id="sb-score">0</span>&nbsp;|&nbsp;
+      🏆 High: <span id="sb-high">0</span>
+    </div>
   </header>
 
-  <!-- Practice menu -->
-  <section id="practice-menu" class="hidden">
-    <h2>Choose a practice mode</h2>
-    <div class="practice-buttons">
-      <button id="mcq-mode">Multiple‑Choice Quiz</button>
-      <button id="typing-mode">Typing / Spelling</button>
-      <button id="race-mode">Type‑Race 30s</button>
-    </div>
+  <!-- ===== NÚT HIGH-SCORES (luôn thấy) ================================== -->
+  <div style="text-align:center;margin:0.5rem 0;">
+    <button id="btn-highscore">High-scores</button>
+  </div>
+
+  <!-- ===== PRACTICE MENU (ẩn mặc định) ================================== -->
+  <section id="practice-menu" class="practice-menu hidden">
+    <button id="mcq-mode">Multiple-Choice Quiz</button>
+    <button id="typing-mode">Typing / Spelling</button>
+    <button id="race-mode">Type-Race&nbsp;30&nbsp;s</button>
   </section>
 
+  <!-- ===== NỘI DUNG TRÒ CHƠI / TỪ VỰNG / NGỮ PHÁP ====================== -->
   <main id="app"></main>
 
   <script src="script.js"></script>

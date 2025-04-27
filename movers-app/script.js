@@ -181,113 +181,233 @@ const vocabularyList = [
     { id:24,  title: 'What a(n) + adj + noun!',              examples: ['What a lovely day!'] }
   ];
   
-  /*** 3. APP STATE **************************************************************/
-  let currentPage  = 'vocab';
-  let currentTheme = 'All';
-  let timerID      = null;
-  const scores     = JSON.parse(localStorage.getItem('moverScores')||'{}');
-  const themes     = ['All', ...new Set(vocabularyList.map(v => v.theme))];
-  
-  /*** 4. UTILITIES **************************************************************/
-  const $      = id => document.getElementById(id);
-  const shuffle= a => [...a].sort(() => Math.random()-0.5);
-  const speak  = t => 'speechSynthesis' in window && window.speechSynthesis.speak(new SpeechSynthesisUtterance(t));
-  const words  = () => currentTheme==='All' ? vocabularyList : vocabularyList.filter(v=>v.theme===currentTheme);
-  function saveScore(mode,sc){scores[currentTheme]??={};scores[currentTheme][mode]=Math.max(sc,scores[currentTheme][mode]||0);localStorage.setItem('moverScores',JSON.stringify(scores));}
-  
-  /*** 5. RENDERERS **************************************************************/
-  function renderThemeSelect(){
-    $('theme-select').innerHTML = themes.map(t=>`<option value=\"${t}\">${t}</option>`).join('');
-    $('theme-select').value = currentTheme;
-  }
-  function renderVocabulary(){
-    $('practice-menu').classList.add('hidden');
-    $('app').innerHTML = words().map(w=>`
-      <div class=\"card\">
-        <h3>${w.word}</h3><p>${w.meaning}</p>
-        <button class=\"speak-btn\" onclick=\"(${speak})('${w.word}')\">🔊</button>
-      </div>`).join('');
-  }
-  function renderGrammar(){
-    $('practice-menu').classList.add('hidden');
-    $('app').innerHTML = grammarStructures.map(g=>`
-      <div class=\"card\">
-        <h3>${g.id}. ${g.title}</h3>
-        <ul>${g.examples.map(e=>`<li>${e}</li>`).join('')}</ul>
-      </div>`).join('');
-  }
-  function showPracticeMenu(){
-    $('practice-menu').classList.remove('hidden');
-    $('app').innerHTML = `<pre>${JSON.stringify(scores[currentTheme]||{},null,2)}</pre>`;
-  }
-  
-  /*** 6. GAMES ******************************************************************/
-  function gameMCQ(){
-    const list = words(); if(!list.length) return alert('No words');
-    const q = shuffle(list)[0];
-    const opts = shuffle([q, ...shuffle(list.filter(x=>x!==q)).slice(0,3)]);
-    $('app').innerHTML = `<h2>${q.word}</h2>` + opts.map(o=>`
-      <button class=\"quiz-option\" onclick=\"this.classList.add('${o===q?'correct':'incorrect'}');setTimeout(gameMCQ,600)\">
-        ${o.meaning}
-      </button>`).join('');
-  }
-  function gameTyping(){
-    const list = words(); if(!list.length) return alert('No words');
-    const q = shuffle(list)[0];
-    $('app').innerHTML = `
-      <h2>${q.meaning}</h2>
-      <input id=\"inp\" autofocus><button id=\"chk\">Check</button><div id=\"res\"></div>`;
-    $('chk').onclick = () => {
-      $('res').textContent = $('inp').value.trim().toLowerCase()===q.word.toLowerCase()
-        ? '✅ Correct!' : `❌ ${q.word}`;
-      if($('res').textContent.includes('✅')) setTimeout(gameTyping,500);
-    };
-  }
-  function gameRace(){
-    const list = words(); if(!list.length) return alert('No words');
-    let time=30,score=0;
-    const prompt=()=>{
-      const q=shuffle(list)[0];
-      $('app').innerHTML=`
-        <div id=\"timer\">${time}</div>
-        <h2>${q.meaning}</h2>
-        <input id=\"race\" autofocus>
-        <div>Score: <span id=\"sc\">${score}</span></div>`;
-      $('race').onkeyup=e=>{
-        if(e.key==='Enter'){
-          if(e.target.value.trim().toLowerCase()===q.word.toLowerCase()) score++;
-          prompt();
-        }
-      };
-    };
-    prompt();
-    clearInterval(timerID);
-    timerID=setInterval(()=>{
-      time--; $('timer').textContent=time;
-      if(time<=0){
-        clearInterval(timerID); saveScore('race',score);
-        $('app').innerHTML=`<h2>Time's up!</h2><p>Score: ${score}</p><button onclick=\"gameRace()\">Play again</button>`;
-      }
+ /************************ 3. APP‑LEVEL STATE **********************************/
+let currentPage   = 'vocab';
+let currentTheme  = 'All';
+let timerID       = null;          // cho Type‑Race
+
+/* ─── Scoreboard ─────────────────────────────────────────────────────────── */
+let playerName   = '';
+let currentScore = 0;
+let timeLeft     = 60;             // giây / ván MCQ
+let scoreTimer   = null;           // interval id (MCQ)
+
+const MAX_HISCORES = 6;
+const scores = JSON.parse(localStorage.getItem('moverScores') || '{}');
+const themes  = ['All', ...new Set(vocabularyList.map(v => v.theme))];
+
+/************************ 4. UTILITIES ******************************************/
+const $       = id => document.getElementById(id);
+const shuffle = a  => [...a].sort(() => Math.random() - 0.5);
+const speak   = t  => 'speechSynthesis' in window && window.speechSynthesis.speak(new SpeechSynthesisUtterance(t));
+const words   = ()  => currentTheme === 'All'
+  ? vocabularyList
+  : vocabularyList.filter(v => v.theme === currentTheme);
+
+/* DOM references for scoreboard */
+const $time  = $('sb-time');     // <span id="sb-time">
+const $curr  = $('sb-score');    // <span id="sb-score">
+const $high  = $('sb-high');     // <span id="sb-high">
+const $board = $('scoreboard');  // <div id="scoreboard">
+
+function loadHighscores(theme, mode) {
+  return (scores[theme]?.[mode] ?? []).slice(0, MAX_HISCORES);
+}
+function rankLabel(i) {
+  const lbl = ['1ST','2ND','3RD','4TH','5TH','6TH'];
+  const ico = ['⭐','⭐','⭐','','',''];
+  return `${ico[i]||''} ${lbl[i]}`;
+}
+function saveScore(mode, sc) {
+  scores[currentTheme] ??= {};
+  const list = loadHighscores(currentTheme, mode);
+  list.push({ name: playerName, score: sc });
+  list.sort((a,b) => b.score - a.score);
+  list.splice(MAX_HISCORES);
+  scores[currentTheme][mode] = list;
+  localStorage.setItem('moverScores', JSON.stringify(scores));
+}
+
+/************************ 5. RENDERERS ****************************************/
+function renderThemeSelect(){
+  $('theme-select').innerHTML = themes.map(t => `<option value="${t}">${t}</option>`).join('');
+  $('theme-select').value = currentTheme;
+}
+function renderVocabulary(){
+  $('practice-menu').classList.add('hidden');
+  $('app').innerHTML = words().map(w => `
+    <div class="card">
+      <h3>${w.word}</h3><p>${w.meaning}</p>
+      <button class="speak-btn" onclick="(${speak})('${w.word}')">🔊</button>
+    </div>`).join('');
+}
+function renderGrammar(){
+  $('practice-menu').classList.add('hidden');
+  $('app').innerHTML = grammarStructures.map(g => `
+    <div class="card">
+      <h3>${g.id}. ${g.title}</h3>
+      <ul>${g.examples.map(e => `<li>${e}</li>`).join('')}</ul>
+    </div>`).join('');
+}
+function showPracticeMenu(){
+  $('practice-menu').classList.remove('hidden');
+  $('app').innerHTML = `
+    <div class="guide">
+      <h2>Hướng dẫn cách chơi</h2>
+      <ul>
+        <li>Bấm một chế độ bên trên để bắt đầu.</li>
+        <li><strong>Multiple‑Choice Quiz</strong>: chọn nghĩa tiếng Việt đúng.</li>
+        <li><strong>Typing / Spelling</strong>: gõ chính tả của từ hiển thị.</li>
+        <li><strong>Type‑Race 30 giây</strong>: gõ càng nhanh càng tốt.</li>
+        <li>Điểm cao nhất được lưu riêng cho từng chủ đề.</li>
+      </ul>
+    </div>`;
+}
+/* ─── High‑score table ───────────────────────────────────────────────────── */
+function renderHighscoreTable(){
+  const data = loadHighscores(currentTheme, 'mcq'); // thay 'mcq' nếu muốn mode khác
+  $('practice-menu').classList.add('hidden');
+
+  $('app').innerHTML = `
+    <div class="hiscore-wrapper">
+      <h2 class="hiscore-title">HIGHSCORES</h2>
+      <table class="hiscore-table">
+        <thead><tr><th>POS</th><th>SCORE</th><th>NAME</th></tr></thead>
+        <tbody>
+          ${data.map((row,i) => `
+            <tr><td>${rankLabel(i)}</td><td>${row.score}</td><td>${row.name}</td></tr>`).join('')}
+        </tbody>
+      </table>
+      <button class="btn-back" onclick="showPracticeMenu()">⇦ Practice Menu</button>
+    </div>`;
+}
+
+/************************ 6. GAMES ********************************************/
+/* ── Multiple‑Choice Quiz ───────────────────────────────────────────────────*/
+function gameMCQ(start=false){
+  if(start){
+    playerName   = prompt('Tên người chơi?')?.trim() || 'Player';
+    currentScore = 0;
+    timeLeft     = 60;
+
+    /* hiển thị scoreboard */
+    $board.classList.remove('hidden');
+    $curr.textContent = currentScore;
+    $time.textContent = timeLeft;
+    $high.textContent = (loadHighscores(currentTheme,'mcq')[0]?.score)||0;
+
+    clearInterval(scoreTimer);
+    scoreTimer = setInterval(()=>{
+      timeLeft--; $time.textContent = timeLeft;
+      if(timeLeft<=0){clearInterval(scoreTimer); endMCQ();}
     },1000);
   }
+
+  const list = words(); if(!list.length) return alert('No words');
+  const q    = shuffle(list)[0];
+  const opts = shuffle([q, ...shuffle(list.filter(x=>x!==q)).slice(0,3)]);
+  $('app').innerHTML = `
+    <div class="quiz-wrapper">
+      <h2 class="quiz-question">\"${q.word}\" nghĩa là gì?</h2>
+      <div class="quiz-options">
+        ${opts.map(o=>`<button class="quiz-option" onclick="handleAnswer(this, ${o===q})">${o.meaning}</button>`).join('')}
+      </div>
+    </div>`;
+}
+
+function handleAnswer(btn, correct){
+  btn.classList.add(correct ? 'correct' : 'incorrect');
+  if(correct){ currentScore++; $curr.textContent = currentScore; }
+  setTimeout(()=>gameMCQ(),500);
+}
+
+function endMCQ(){
+  saveScore('mcq', currentScore);
+  $board.classList.add('hidden');
+  $('app').innerHTML = `
+    <h2>Hết giờ!</h2><p>${playerName} đạt ${currentScore} điểm.</p>
+    <button onclick=\"gameMCQ(true)\">Chơi lại</button>
+    <button onclick=\"renderHighscoreTable()\">Xem High‑scores</button>`;
+  /* cập nhật high-score hiển thị trong menu nếu người chơi vượt kỷ lục */
+  const newHigh = loadHighscores(currentTheme,'mcq')[0]?.score || 0;
+  if(newHigh) $high.textContent = newHigh;
+}
+
+/* ── Typing / Spelling ───────────────────────────────────────────────────── */ / Spelling ───────────────────────────────────────────────────── */
+function gameTyping(){
+  const list = words(); if(!list.length) return alert('No words');
+  const q = shuffle(list)[0];
+  $('practice-menu').classList.add('hidden');
+  $('app').innerHTML = `
+    <h2>${q.meaning}</h2>
+    <input id="inp" autofocus><button id="chk">Check</button><div id="res"></div>`;
+  $('chk').onclick = () => {
+    const ok = $('inp').value.trim().toLowerCase() === q.word.toLowerCase();
+    $('res').textContent = ok ? '✅ Correct!' : `❌ ${q.word}`;
+    if(ok) setTimeout(gameTyping, 500);
+  };
+}
+
+/* ── Type‑Race 30 s ───────────────────────────────────────────────────────── */
+function gameRace(){
+  const list = words(); if(!list.length) return alert('No words');
+  let time=30, score=0;
+  const prompt=()=>{
+    const q = shuffle(list)[0];
+    $('app').innerHTML = `
+      <div id="timer">${time}</div>
+      <h2>${q.meaning}</h2>
+      <input id="race" autofocus>
+      <div>Score: <span id="sc">${score}</span></div>`;
+    $('race').onkeyup = e => {
+      if(e.key==='Enter'){
+        if(e.target.value.trim().toLowerCase()===q.word.toLowerCase()) score++;
+        prompt();
+      }
+    };
+  };
+  $('practice-menu').classList.add('hidden');
+  prompt();
+  clearInterval(timerID);
+  timerID = setInterval(() => {
+    time--; $('timer').textContent = time;
+    if(time<=0){
+      clearInterval(timerID);
+      saveScore('race', score);
+      $('app').innerHTML = `<h2>Time's up!</h2><p>Score: ${score}</p><button onclick="gameRace()">Play again</button>`;
+    }
+  },1000);
+}
+
+/************************ 7. NAVIGATION ****************************************/
+function setActive(id){
+  ['btn-vocab','btn-grammar','btn-practice'].forEach(x => $(x).classList.remove('active'));
+  $(id).classList.add('active');
+}
+function initNav(){
+  $('btn-vocab'   ).onclick = () => { currentPage='vocab';   setActive('btn-vocab');   renderVocabulary(); };
+  $('btn-grammar' ).onclick = () => { currentPage='grammar'; setActive('btn-grammar'); renderGrammar();    };
+  $('btn-practice').onclick = () => {
+    currentPage = 'practice';
+    setActive('btn-practice');
   
-  /*** 7. NAVIGATION *************************************************************/
-  function setActive(id){['btn-vocab','btn-grammar','btn-practice'].forEach(x=>$(x).classList.remove('active')); $(id).classList.add('active');}
-  function initNav(){
-    $('btn-vocab').onclick   = ()=>{currentPage='vocab';   setActive('btn-vocab');   renderVocabulary();};
-    $('btn-grammar').onclick = ()=>{currentPage='grammar'; setActive('btn-grammar'); renderGrammar();   };
-    $('btn-practice').onclick= ()=>{currentPage='practice';setActive('btn-practice');showPracticeMenu(); };
-    $('mcq-mode').onclick    = ()=>{gameMCQ();   $('practice-menu').classList.add('hidden');};
-    $('typing-mode').onclick = ()=>{gameTyping(); $('practice-menu').classList.add('hidden');};
-    $('race-mode').onclick   = ()=>{gameRace();   $('practice-menu').classList.add('hidden');};
-  }
+    // Ẩn menu nếu đang hiện
+    $('practice-menu').classList.add('hidden');
   
-  /*** 8. INITIALISE *************************************************************/
-  window.addEventListener('DOMContentLoaded',()=>{
-    renderThemeSelect();
-    $('theme-select').onchange = e => {currentTheme=e.target.value; if(currentPage==='vocab') renderVocabulary();};
-    initNav();
-    setActive('btn-vocab');
-    renderVocabulary();
-  });
-  
+    // Chạy Multiple-Choice Quiz
+    gameMCQ(true);
+  };
+    $('mcq-mode'    ).onclick = () => { gameMCQ(true); $('practice-menu').classList.add('hidden'); };
+  $('typing-mode' ).onclick = () => { gameTyping();  };
+  $('race-mode'   ).onclick = () => { gameRace();    };
+  const btnHS = $('btn-highscore'); if(btnHS) btnHS.onclick = renderHighscoreTable;
+}
+
+/************************ 8. INITIALISE ****************************************/
+window.addEventListener('DOMContentLoaded', () => {
+  renderThemeSelect();
+  $('theme-select').onchange = e => { currentTheme = e.target.value; if(currentPage==='vocab') renderVocabulary(); };
+  initNav();
+  setActive('btn-vocab');
+  renderVocabulary();
+}); 
