@@ -1,0 +1,346 @@
+{
+    "tests": [
+      {
+        "id": "test_phattram",
+        "title": "PHÁT ÂM - NHẤN ÂM",
+        "questions": [
+          { "id": "p1",  "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: change, school, chance, charity.",      "options": { "A": "change", "B": "school", "C": "chance", "D": "charity" },  "correctAnswer": "B" },
+          { "id": "p2",  "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: interesting, fictional, exciting, picturesque.", "options": { "A": "interesting", "B": "fictional", "C": "exciting", "D": "picturesque" }, "correctAnswer": "D" },
+          { "id": "p3",  "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: kings, sings, says, sleeps.",           "options": { "A": "kings", "B": "sings", "C": "says", "D": "sleeps" },               "correctAnswer": "C" },
+          { "id": "p4",  "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: watched, looked, travelled, laughed.",     "options": { "A": "watched", "B": "looked", "C": "travelled", "D": "laughed" },             "correctAnswer": "A" },
+          { "id": "p5",  "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: hill, hiking, hour, highland.",        "options": { "A": "hill", "B": "hiking", "C": "hour", "D": "highland" },            "correctAnswer": "C" },
+          { "id": "p6",  "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: performance, afternoon, terrible, September.", "options": { "A": "performance", "B": "afternoon", "C": "terrible", "D": "September" }, "correctAnswer": "B" },
+          { "id": "p7",  "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: Activity, geography, biology, literature.",       "options": { "A": "Activity", "B": "geography", "C": "biology", "D": "literature" },         "correctAnswer": "B" },
+          { "id": "p8",  "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: dessert, waiter, menu, money.",         "options": { "A": "dessert", "B": "waiter", "C": "menu", "D": "money" },              "correctAnswer": "A" },
+          { "id": "p9",  "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: novel, decide, author, science.",      "options": { "A": "novel", "B": "decide", "C": "author", "D": "science" },            "correctAnswer": "C" },
+          { "id": "p10", "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: horror, boring, against, action.",     "options": { "A": "horror", "B": "boring", "C": "against", "D": "action" },             "correctAnswer": "A" },
+          { "id": "p11", "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: island, flashlight, mountain, hotel.",     "options": { "A": "island", "B": "flashlight", "C": "mountain", "D": "hotel" },               "correctAnswer": "B" },
+          { "id": "p12", "type": "multiple-choice", "question": "Choose the word whose underlined part is pronounced differently from the others: dislike, soldier, horror, author.",       "options": { "A": "dislike", "B": "soldier", "C": "horror", "D": "author" },             "correctAnswer": "B" }
+        ]
+      },
+      {
+        "id": "test_tracnghiem",
+        "title": "TRẮC NGHIỆM",
+        "sections": [
+          {
+            "section": "SỐ 1",
+            "questions": [
+              { "id": "s1_5",  "type": "multiple-choice", "question": "The movie was so _____ that I cried at the end.",                                 "options": { "A": "awful", "B": "sad", "C": "fantastic", "D": "terrible" }, "correctAnswer": "B" },
+              { "id": "s1_6",  "type": "multiple-choice", "question": "Napoleon Bonaparte was a great leader and he won many _____." ,                      "options": { "A": "leaders", "B": "soldier", "C": "army", "D": "battles" },    "correctAnswer": "D" },
+              { "id": "s1_7",  "type": "multiple-choice", "question": "There is no _____, so everything floats in space.",                         "options": { "A": "space station", "B": "gravity", "C": "space suit", "D": "devices" }, "correctAnswer": "B" },
+              { "id": "s1_8",  "type": "multiple-choice", "question": "In 2030, _____ will deliver most things in less than half an hour.",        "options": { "A": "smart walls", "B": "3D printers", "C": "drones", "D": "smart screens" },  "correctAnswer": "C" },
+              { "id": "s1_9",  "type": "multiple-choice", "question": "When you visit a new country, you _____ try to learn the language.",            "options": { "A": "should", "B": "can’t", "C": "don’t", "D": "enjoy" },    "correctAnswer": "A" },
+              { "id": "s1_10", "type": "multiple-choice", "question": "The average _____ today is 14°. We should wear warm clothes when going out.",    "options": { "A": "population", "B": "size", "C": "cost", "D": "temperature" }, "correctAnswer": "D" },
+              { "id": "s1_11", "type": "multiple-choice", "question": "Yesterday I watched a movie. It _____ really exciting. You should go and see it!", "options": { "A": "is", "B": "was", "C": "isn’t", "D": "wasn’t" }, "correctAnswer": "B" },
+              { "id": "s1_12", "type": "multiple-choice", "question": "They don’t have water at the campsite _____ you should bring some bottled water.", "options": { "A": "but", "B": "or", "C": "so", "D": "and" }, "correctAnswer": "C" },
+              { "id": "s1_13", "type": "multiple-choice", "question": "Bình: “Should we bring a tent?” Hải: “_____.”",                       "options": { "A": "You’re welcome.", "B": "Yes, me too.", "C": "Sorry, I’m busy.", "D": "Yes, good idea." }, "correctAnswer": "D" },
+              { "id": "s1_14", "type": "multiple-choice", "question": "A historical movie helps us understand how our people fought _____ invaders.", "options": { "A": "for", "B": "over", "C": "against", "D": "about" }, "correctAnswer": "C" }
+            ]
+          },        
+          {
+            "section": "SỐ 2",
+            "questions": [
+              { "id": "s2_5",  "type": "multiple-choice", "question": "My cousin gave me a _____ for my birthday.",                                   "options": { "A": "present", "B": "desert", "C": "river", "D": "mountain" },      "correctAnswer": "A" },
+              { "id": "s2_6",  "type": "multiple-choice", "question": "There were 150 _____ in this marathon last year.",                             "options": { "A": "competitor", "B": "competitors", "C": "competitions", "D": "competition" }, "correctAnswer": "B" },
+              { "id": "s2_7",  "type": "multiple-choice", "question": "Ha Long Bay is a natural _____ of the world.",                                "options": { "A": "forest", "B": "wonder", "C": "hospital", "D": "beach" },      "correctAnswer": "B" },
+              { "id": "s2_8",  "type": "multiple-choice", "question": "He left school and he didn’t get a _____.",                              "options": { "A": "call", "B": "qualification", "C": "picture", "D": "money" },  "correctAnswer": "B" },
+              { "id": "s2_9",  "type": "multiple-choice", "question": "You need to bring a _____ so you don’t get cold at night.",              "options": { "A": "sleeping bag", "B": "battery", "C": "pillows", "D": "soap" }, "correctAnswer": "A" },
+              { "id": "s2_10", "type": "multiple-choice", "question": "She spends most of her free time _____ volunteer work.",                  "options": { "A": "do", "B": "to do", "C": "doing", "D": "did" },           "correctAnswer": "C" },
+              { "id": "s2_11", "type": "multiple-choice", "question": "You _____ eat more vegetables.",                                           "options": { "A": "have", "B": "want", "C": "should", "D": "love" },    "correctAnswer": "C" },
+              { "id": "s2_12", "type": "multiple-choice", "question": "They canceled their picnic _____ the weather was bad.",                  "options": { "A": "or", "B": "because", "C": "but", "D": "nor" },     "correctAnswer": "B" },
+              { "id": "s2_13", "type": "multiple-choice", "question": "A: Should we bring some snacks to eat? – B: _____",                     "options": { "A": "Yes, I did.", "B": "Yes, good idea.", "C": "Yes, you need.", "D": "I don’t have." }, "correctAnswer": "B" },
+              { "id": "s2_14", "type": "multiple-choice", "question": "Ha Long is famous _____ its scenic rock formations.",                   "options": { "A": "to", "B": "with", "C": "for", "D": "by" },    "correctAnswer": "C" }
+            ]
+          },
+          {
+            "section": "SỐ 3",
+            "questions": [
+              { "id": "s3_5",  "type": "multiple-choice", "question": "He went to the _____ to see wild animals last Saturday.",             "options": { "A": "park", "B": "library", "C": "zoo", "D": "post office" },  "correctAnswer": "C" },
+              { "id": "s3_6",  "type": "multiple-choice", "question": "Don't forget to bring your _____ to climb a mountain.",              "options": { "A": "bat", "B": "sport shoes", "C": "sandals", "D": "goggles" }, "correctAnswer": "B" },
+              { "id": "s3_7",  "type": "multiple-choice", "question": "Would you like some _____ with your burger?",                      "options": { "A": "sweets", "B": "apples", "C": "chips", "D": "rice" }, "correctAnswer": "C" },
+              { "id": "s3_8",  "type": "multiple-choice", "question": "Sweets and crisps are _____ food. You shouldn’t eat too much of them.", "options": { "A": "unhealthy", "B": "unhealth", "C": "healthy", "D": "health" }, "correctAnswer": "A" },
+              { "id": "s3_9",  "type": "multiple-choice", "question": "I’m thirsty. Can I have some _____, please?",                      "options": { "A": "water", "B": "sandwich", "C": "meat", "D": "vegetable" }, "correctAnswer": "A" },
+              { "id": "s3_10", "type": "multiple-choice", "question": "You need to bring a _____, so you don’t get cold at night.",        "options": { "A": "sleeping bag", "B": "battery", "C": "pillows", "D": "soap" }, "correctAnswer": "A" },
+              { "id": "s3_11", "type": "multiple-choice", "question": "You should visit Pongour _____ in Lâm Đồng.",                   "options": { "A": "cave", "B": "waterfall", "C": "beach", "D": "island" }, "correctAnswer": "B" },
+              { "id": "s3_12", "type": "multiple-choice", "question": "Ha Long is famous _____ its scenic rock formations.",             "options": { "A": "to", "B": "with", "C": "for", "D": "by" },     "correctAnswer": "C" },
+              { "id": "s3_13", "type": "multiple-choice", "question": "They don’t mind _____ in the countryside.",                     "options": { "A": "living", "B": "live", "C": "to living", "D": "to live" }, "correctAnswer": "A" },
+              { "id": "s3_14", "type": "multiple-choice", "question": "A: “This suitcase is so heavy. I can’t lift it!” – B: “_____.”",  "options": { "A": "I can make it for you.", "B": "Let me help you.", "C": "Great. I’ll be there.", "D": "It certainly is." }, "correctAnswer": "B" }
+            ]
+          }
+        ]
+    },
+          {
+            "id": "test_doanvan",
+            "title": "ĐOẠN VĂN",
+            "sections": [
+              {
+                "section": "SỐ 1 – Fill the Blanks",
+                "type": "reading",
+                "passage": "When life changes so fast, the family life will change, too. So what will a family be (17)_________ after a hundred years? It is impossible to have the correct answer. Parents will have (18)_________ babies. They can even choose (19)_________ child’s hair or eye color. The mother will be busy but she will get help (20)_________ some friendly robot helpers. When the family go out together, they will travel on flying cars. These cars will be much faster and there will be no traffic jams (21)_________ each flying car can have its own way. There will be love and (22)_________ between the family members.",
+                "questions": [
+                  {
+                    "id": "4_17",
+                    "type": "multiple-choice",
+                    "question": "17.",
+                    "options": { "A": "enjoy", "B": "like", "C": "as", "D": "so" },
+                    "correctAnswer": "C"
+                  },
+                  {
+                    "id": "4_18",
+                    "type": "multiple-choice",
+                    "question": "18.",
+                    "options": { "A": "healthier", "B": "healthiest", "C": "health", "D": "healthful" },
+                    "correctAnswer": "A"
+                  },
+                  {
+                    "id": "4_19",
+                    "type": "multiple-choice",
+                    "question": "19.",
+                    "options": { "A": "our", "B": "ours", "C": "their", "D": "theirs" },
+                    "correctAnswer": "C"
+                  },
+                  {
+                    "id": "4_20",
+                    "type": "multiple-choice",
+                    "question": "20.",
+                    "options": { "A": "of", "B": "with", "C": "at", "D": "from" },
+                    "correctAnswer": "B"
+                  },
+                  {
+                    "id": "4_21",
+                    "type": "multiple-choice",
+                    "question": "21.",
+                    "options": { "A": "so", "B": "because", "C": "although", "D": "but" },
+                    "correctAnswer": "B"
+                  },
+                  {
+                    "id": "4_22",
+                    "type": "multiple-choice",
+                    "question": "22.",
+                    "options": { "A": "care", "B": "careful", "C": "careless", "D": "carefully" },
+                    "correctAnswer": "A"
+                  }
+                ]
+              },
+              {
+                "section": "SỐ 1 – Read & True/False + MC",
+                "type": "reading",
+                "passage": "Ciara\nI'm going to spend a week in Paris with my family! I'm so excited! We're going to travel by train and take lots of pictures together. I bought a guidebook last week and Paris looks really cool, but very expensive.\n\nMartin\nI'm not going away. Boring! Some of my friends are going to learn how to play tennis with the new sports teacher. I'm going to join them. And we're going to have a drink after each tennis class.\n\nJason\nI'm going to visit some caves in Ha Long Bay. It is in Quảng Ninh Province, Việt Nam. Hạ Long Bay is a natural wonder of the world. I'm going to explore Sửng Sốt Cave and Thiên Cung Cave with my Vietnamese friends. It is magnificent inside the caves, and we can take awesome photos together.",
+                "questions": [
+                  {
+                    "id": "4_tf1",
+                    "type": "true-false",
+                    "question": "1. Ciara and her friends are going to travel by train.",
+                    "correctAnswer": "TRUE"
+                  },
+                  {
+                    "id": "4_tf2",
+                    "type": "true-false",
+                    "question": "2. Martin and his friends are going to learn how to play tennis with the new sports teacher.",
+                    "correctAnswer": "TRUE"
+                  },
+                  {
+                    "id": "4_tf3",
+                    "type": "true-false",
+                    "question": "3. Ha Long Bay is one of the natural wonders of the world.",
+                    "correctAnswer": "TRUE"
+                  },
+                  {
+                    "id": "4_tf4",
+                    "type": "true-false",
+                    "question": "4. Jason can take awesome photos with Ciara and Martin.",
+                    "correctAnswer": "FALSE"
+                  },
+                  {
+                    "id": "4_mc5",
+                    "type": "multiple-choice",
+                    "question": "5. Hạ Long Bay is in ___ Province, Viet Nam.",
+                    "options": { "A": "Quảng Nam", "B": "Quảng Trị", "C": "Quảng Ninh", "D": "Quảng Bình" },
+                    "correctAnswer": "C"
+                  },
+                  {
+                    "id": "4_mc6",
+                    "type": "multiple-choice",
+                    "question": "6. Martin and his friends are going to ___ after each tennis class.",
+                    "options": { "A": "have fun", "B": "have a drink", "C": "have a meal", "D": "have a barbecue" },
+                    "correctAnswer": "B"
+                  }
+                ]
+            }
+        ]
+          },
+            {
+                    "id": "test_tuluan",
+                    "title": "PHẦN TỰ LUẬN",
+                    "sections": [
+                      {
+                        "section": "LOẠI TỪ",
+                        "questions": [
+                          { "id": "ua29", "type": "fill-blank", "question": "29. Trees are very _________. (use)", "correctAnswers": ["useful"] },
+                          { "id": "ua30", "type": "fill-blank", "question": "30. In the next 20 years, many homes might be smart homes with robot ______ to do the chores. (help)", "correctAnswers": ["helpers"] },
+                          { "id": "ua31", "type": "fill-blank", "question": "31. A(n) ______ house is a house that is good for the environment. (friend)", "correctAnswers": ["eco-friendly"] },
+                          { "id": "ua32", "type": "fill-blank", "question": "32. Quang Trung fought against ______ from the north and won the battles. (invade)", "correctAnswers": ["invaders"] },
+                          { "id": "ua33", "type": "fill-blank", "question": "33. My grandfather speaks English and Russian very _______. (fluent)", "correctAnswers": ["fluently"] },
+                          { "id": "ua34", "type": "fill-blank", "question": "34. Don’t use plastic bags just once. We can ______ them. (use)", "correctAnswers": ["reuse"] },
+              
+                          { "id": "ub29", "type": "fill-blank", "question": "29. Collecting stamps can bring you a lot of _________. (funny)", "correctAnswers": ["fun"] },
+                          { "id": "ub30", "type": "fill-blank", "question": "30. Fruit is very good for our _______. (healthy)", "correctAnswers": ["health"] },
+                          { "id": "ub31", "type": "fill-blank", "question": "31. We had a _________ time last night. (wonder)", "correctAnswers": ["wonderful"] },
+                          { "id": "ub32", "type": "fill-blank", "question": "32. My little sister loves watching _______ movies. (animation)", "correctAnswers": ["animated"] },
+                          { "id": "ub33", "type": "fill-blank", "question": "33. Our aim is to ________ the jobs of our members. (protection)", "correctAnswers": ["protect"] },
+                          { "id": "ub34", "type": "fill-blank", "question": "34. They shouted _________ when they saw their idols. (excited)", "correctAnswers": ["excitedly"] },
+              
+                          { "id": "uc29", "type": "fill-blank", "question": "29. The King fought against the ________ and won the battle. (invade)", "correctAnswers": ["invaders"] },
+                          { "id": "uc30", "type": "fill-blank", "question": "30. I think science fiction is very _________. (excite)", "correctAnswers": ["exciting"] },
+                          { "id": "uc31", "type": "fill-blank", "question": "31. I’m _________ sorry for the mistake. (terrible)", "correctAnswers": ["terribly"] },
+                          { "id": "uc32", "type": "fill-blank", "question": "32. Where do you think people will ________ in the future? (life)", "correctAnswers": ["live"] },
+                          { "id": "uc33", "type": "fill-blank", "question": "33. Fruit is very good for our _________. (healthy)", "correctAnswers": ["health"] },
+                          { "id": "uc34", "type": "fill-blank", "question": "34. We had a _________ time last night. (wonder)", "correctAnswers": ["wonderful"] }
+                        ]
+                      }
+                    ]
+                },
+                      {
+                        "id": "test_arrange_sentence",
+                        "title": "SẮP XẾP CÂU",
+                        "sections": [
+                          {
+                            "section": "VI. SẮP XẾP CÂU",
+                            "questions": [
+                              {
+                                "id": "d6_35a",
+                                "type": "reorder",
+                                "question": "35. a bus station / There is / the hotel / near / .",
+                                "answer": "There is a bus station near the hotel."
+                              },
+                              {
+                                "id": "d6_36a",
+                                "type": "reorder",
+                                "question": "36. their sleeping bags / Astronauts / to the wall / have to lock / .",
+                                "answer": "Astronauts have to lock their sleeping bags to the wall."
+                              },
+                              {
+                                "id": "d6_35b",
+                                "type": "reorder",
+                                "question": "35. anything / to eat / you want / will make / An automatic food machine / .",
+                                "answer": "An automatic food machine will make anything to eat you want."
+                              },
+                              {
+                                "id": "d6_36b",
+                                "type": "reorder",
+                                "question": "36. Astronauts / their sleeping / the wall / bags to / to lock / have / .",
+                                "answer": "Astronauts have to lock their sleeping bags to the wall."
+                              },
+                              {
+                                "id": "d6_35c",
+                                "type": "reorder",
+                                "question": "35. what / know / community service? / do you / about /",
+                                "answer": "What do you know about community service?"
+                              },
+                              {
+                                "id": "d6_36c",
+                                "type": "reorder",
+                                "question": "36. you donate / a new tree. / Every dollar / can buy /",
+                                "answer": "Every dollar you donate can buy a new tree."
+                              }
+                ]
+              }
+            ]
+        },
+              {
+                "id": "test_rewrite",
+                "title": "VIẾT LẠI CÂU",
+                "sections": [
+                  {
+                    "section": "VII. VIẾT LẠI CÂU",
+                    "questions": [
+                      {
+                        "id": "d7_37a",
+                        "type": "rewrite",
+                        "question": "There are forty-two students in Nga’s class.",
+                        "prompt": "Nga’s class has forty-two students.",
+                        "answer": "Nga’s class has forty-two students."
+                      },
+                      {
+                        "id": "d7_38a",
+                        "type": "rewrite",
+                        "question": "Landmark-81 is higher than Bitexco tower.",
+                        "prompt": "Bitexco tower is lower than Landmark-81.",
+                        "answer": "Bitexco tower is lower than Landmark-81."
+                      },
+                      {
+                        "id": "d7_39a",
+                        "type": "rewrite",
+                        "question": "Hieu is keen on recycling newspapers and magazines.",
+                        "prompt": "Hieu is keen on recycling newspapers and magazines.",
+                        "answer": "Hieu is keen on recycling newspapers and magazines."
+                      },
+                      {
+                        "id": "d7_40a",
+                        "type": "rewrite",
+                        "question": "The river is on the left of the mountain.",
+                        "prompt": "The mountain is on the right of the river.",
+                        "answer": "The mountain is on the right of the river."
+                      },
+                      {
+                        "id": "d7_37b",
+                        "type": "rewrite",
+                        "question": "Do you want to recycle plastic bottles?",
+                        "prompt": "Would you like to recycle plastic bottles?",
+                        "answer": "Would you like to recycle plastic bottles?"
+                      },
+                      {
+                        "id": "d7_38b",
+                        "type": "rewrite",
+                        "question": "My school is smaller than your school.",
+                        "prompt": "Your school is larger than my school.",
+                        "answer": "Your school is larger than my school."
+                      },
+                      {
+                        "id": "d7_39b",
+                        "type": "rewrite",
+                        "question": "I love shopping online.",
+                        "prompt": "I am fond of shopping online.",
+                        "answer": "I am fond of shopping online."
+                      },
+                      {
+                        "id": "d7_40b",
+                        "type": "rewrite",
+                        "question": "Don’t throw away old newspapers.",
+                        "prompt": "You should recycle old newspapers.",
+                        "answer": "You should recycle old newspapers."
+                      },
+                      {
+                        "id": "d7_37c",
+                        "type": "rewrite",
+                        "question": "There are forty two students in Nga’s class.",
+                        "prompt": "Nga’s class has forty-two students.",
+                        "answer": "Nga’s class has forty-two students."
+                      },
+                      {
+                        "id": "d7_38c",
+                        "type": "rewrite",
+                        "question": "My school is smaller than your school.",
+                        "prompt": "Your school is bigger than my school.",
+                        "answer": "Your school is bigger than my school."
+                      },
+                      {
+                        "id": "d7_39c",
+                        "type": "rewrite",
+                        "question": "I am interested in chatting online with friends.",
+                        "prompt": "I like chatting online with friends.",
+                        "answer": "I like chatting online with friends."
+                      },
+                      {
+                        "id": "d7_40c",
+                        "type": "rewrite",
+                        "question": "The post office is in front of the theater.",
+                        "prompt": "The theater is behind the post office.",
+                        "answer": "The theater is behind the post office."
+                      }
+                     ]
+                  }
+              ]
+            }
+      ]
+    }
