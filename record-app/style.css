@@ -1,90 +1,100 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #ffffff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  font-family: Arial, sans-serif;
+  background: #eef2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  background: #fff;
+  padding: 40px 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  width: 320px;
+  text-align: center;
+}
+
+/* Timer hidden by default */
+#timer {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1rem;
+  color: #555;
+  display: none;
+}
+
+.container h1 {
+  margin: 20px 0;
+  color: #333;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.buttons button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Record button styles */
+#recordBtn {
+  background: #ff5e5e;
+}
+#recordBtn:hover {
+  background: #e14e4e;
+}
+/* Gray-out when recording */
+#recordBtn.recording {
+  background: #ccc;
+  color: #666;
+  cursor: default;
+}
+#recordBtn.recording:hover {
+  background: #ccc;
+}
+
+/* Play & Download buttons */
+#playBtn {
+  background: #5eafff;
+}
+#playBtn:hover {
+  background: #4e9eff;
+}
+#downloadBtn {
+  background: #4acf79;
+}
+#downloadBtn:hover {
+  background: #3bbf69;
+}
+
+audio {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 400px) {
   .container {
-    text-align: center;
-    border: 3px solid #ffe1e1;
-    border-radius: 20px;
-    padding: 30px;
-    max-width: 350px;
     width: 90%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
   }
-  
-  h1 {
-    margin-bottom: 0.2em;
-    color: #333;
+  .buttons button {
+    font-size: 0.9rem;
+    padding: 10px 0;
   }
-  
-  .mic-button {
-    background-color: #ff5e5e;
-    color: white;
-    font-size: 18px;
-    border: none;
-    border-radius: 50%;
-    width: 90px;
-    height: 90px;
-    margin: 20px 0;
-    cursor: pointer;
-  }
-  
-  .mic-button.recording {
-    box-shadow: 0 0 10px red;
-    animation: pulse 1s infinite;
-  }
-  
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6); }
-    70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
-  }
-  
-  .controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-  }
-  
-  .controls button,
-  .download {
-    font-size: 20px;
-    padding: 10px 12px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    background-color: #f0f0f0;
-  }
-  
-  #playButton {
-    background-color: #a3e4b3;
-  }
-  
-  #stopButton {
-    background-color: #ddd;
-  }
-  
-  .download {
-    background-color: #a7cdfc;
-    text-decoration: none;
-    display: inline-block;
-  }
-  
-  button:hover,
-  .download:hover {
-    opacity: 0.85;
-  }
-  
-  button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
+}

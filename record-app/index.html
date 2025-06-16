@@ -1,30 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pronunciation Practice</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Recording Practice</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="container">
-    <h1>Pronunciation Practice</h1>
-    <p>Record & Listen to Your Voice</p>
-
-    <button id="recordButton" class="mic-button">🎤</button>
-
-    <div class="controls">
-      <button id="stopButton" disabled>⏹</button>
-      <button id="playButton" disabled>▶️</button>
-      <a id="downloadLink" class="download" download="recording.webm">⬇️</a>
+    <div id="timer">00:00</div>
+    <h1>Recording Practice</h1>
+    <div class="buttons">
+      <button id="recordBtn">Record</button>
+      <button id="playBtn" disabled>Play</button>
+      <button id="downloadBtn" disabled>Download</button>
     </div>
-
-    <audio id="audioPlayback" controls style="display: none;"></audio>
-
-    <button id="speechToTextButton">🗣️ Speech to Text</button>
-    <p id="speechResult" style="color:#444;"></p>
+    <audio id="audioPlayback" controls></audio>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>

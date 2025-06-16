@@ -1,74 +1,80 @@
-let mediaRecorder;
-let recordedChunks = [];
-
-const recordButton = document.getElementById('recordButton');
-const stopButton = document.getElementById('stopButton');
-const playButton = document.getElementById('playButton');
-const downloadLink = document.getElementById('downloadLink');
+const recordBtn     = document.getElementById('recordBtn');
+const playBtn       = document.getElementById('playBtn');
+const downloadBtn   = document.getElementById('downloadBtn');
 const audioPlayback = document.getElementById('audioPlayback');
-const speechBtn = document.getElementById('speechToTextButton');
-const speechResult = document.getElementById('speechResult');
+const timerDisplay  = document.getElementById('timer');
 
-// ✅ Speech recognition (only English)
-const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-recognition.lang = 'en-US';
-recognition.interimResults = false;
+let mediaRecorder;
+let audioChunks = [];
+let isRecording = false;
+let timerInterval;
 
-speechBtn.addEventListener('click', () => {
-  recognition.start();
-  speechResult.innerText = '🎙️ Listening...';
-});
+// Hide timer on load
+timerDisplay.style.display = 'none';
 
-recognition.onresult = (event) => {
-  const transcript = event.results[0][0].transcript;
-  speechResult.innerText = '📝 ' + transcript;
-};
+recordBtn.addEventListener('click', async () => {
+  if (!isRecording) {
+    // --- START RECORDING ---
+    isRecording = true;
+    recordBtn.classList.add('recording');
+    audioChunks = [];
 
-recognition.onerror = () => {
-  speechResult.innerText = '❌ Could not recognize speech. Try again!';
-};
+    // Show & reset timer
+    timerDisplay.style.display = 'block';
+    let seconds = 0;
+    timerDisplay.textContent = '00:00';
+    timerInterval = setInterval(() => {
+      seconds++;
+      const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+      const s = String(seconds % 60).padStart(2, '0');
+      timerDisplay.textContent = `${m}:${s}`;
+    }, 1000);
 
-// ✅ Recording
-recordButton.addEventListener('click', async () => {
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    recordedChunks = [];
+    // Start MediaRecorder
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.start();
+      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
 
-    mediaRecorder = new MediaRecorder(stream);
+      // Disable other buttons
+      playBtn.disabled     = true;
+      downloadBtn.disabled = true;
+    } catch (err) {
+      console.error('Cannot access microphone:', err);
+      alert('Please allow microphone access to record.');
+      // reset UI
+      clearInterval(timerInterval);
+      timerDisplay.style.display = 'none';
+      isRecording = false;
+      recordBtn.classList.remove('recording');
+    }
 
-    mediaRecorder.ondataavailable = (e) => {
-      if (e.data.size > 0) recordedChunks.push(e.data);
-    };
+  } else {
+    // --- STOP RECORDING ---
+    isRecording = false;
+    recordBtn.classList.remove('recording');
 
+    clearInterval(timerInterval);
+    timerDisplay.style.display = 'none';
+
+    mediaRecorder.stop();
     mediaRecorder.onstop = () => {
-      const blob = new Blob(recordedChunks, { type: 'audio/webm' });
-      const url = URL.createObjectURL(blob);
+      const blob = new Blob(audioChunks, { type: 'audio/webm' });
+      const url  = URL.createObjectURL(blob);
       audioPlayback.src = url;
-      audioPlayback.style.display = 'block';
-      downloadLink.href = url;
-      downloadLink.innerText = '⬇️';
-      playButton.disabled = false;
-    };
 
-    mediaRecorder.start();
-    recordButton.disabled = true;
-    stopButton.disabled = false;
-  } catch (err) {
-    alert('❌ Microphone not accessible: ' + err.message);
+      playBtn.disabled     = false;
+      downloadBtn.disabled = false;
+
+      downloadBtn.onclick = () => {
+        const a = document.createElement('a');
+        a.href        = url;
+        a.download    = 'recording.webm';
+        a.click();
+      };
+    };
   }
 });
 
-stopButton.addEventListener('click', () => {
-  mediaRecorder.stop();
-  stopButton.disabled = true;
-  recordButton.disabled = false;
-});
-
-playButton.addEventListener('click', () => {
-  playButton.disabled = true;
-  audioPlayback.play();
-});
-
-audioPlayback.addEventListener('ended', () => {
-  playButton.disabled = false;
-});
+playBtn.addEventListener('click', () => audioPlayback.play());
