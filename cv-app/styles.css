@@ -1,116 +1,150 @@
 :root {
-  --dark-bg:            #121212;
-  --dark-section-bg:    #1e1e1e;
-  --dark-text:          #e0e0e0;
-  --dark-shadow:        rgba(0,0,0,0.7);
+  /* Dark Mode */
+  --dark-bg:          #121212;
+  --dark-section-bg:  #1e1e1e;
+  --dark-text:        #e0e0e0;
+  --dark-shadow:      rgba(0,0,0,0.7);
 
-  --light-bg:           #f0f4f8;
-  --light-section-bg:   #fff;
-  --light-text:         #333;
-  --light-shadow:       rgba(0,0,0,0.1);
+  /* Light Mode */
+  --light-bg:         #f0f4f8;
+  --light-section-bg: #ffffff;
+  --light-text:       #333333;
+  --light-shadow:     rgba(0,0,0,0.1);
 
-  --neon-blue:          #04fbff;
-  --neon-green:         #39ff14;
-  --neon-orange:        #ff7f11;
-  --neon-pink:          #ff1493;
-  --neon-yellow:        #ffff33;
+  /* Neon */
+  --neon-blue:        #04fbff;
+  --neon-green:       #39ff14;
+  --neon-orange:      #ff7f11;
+  --neon-pink:        #ff1493;
+  --neon-yellow:      #ffff33;
 
-  --cold-blue:          #1e90ff;
-  --cold-teal:          #20b2aa;
-  --cold-steel:         #4682b4;
-  --cold-slate:         #6a5acd;
-  --cold-cyan:          #00ced1;
+  /* Cold */
+  --cold-blue:        #1e90ff;
+  --cold-teal:        #20b2aa;
+  --cold-steel:       #4682b4;
+  --cold-slate:       #6a5acd;
+  --cold-cyan:        #00ced1;
 }
 
-/* ===== Global & Background ===== */
-* {
-  margin: 0; padding: 0; box-sizing: border-box;
-}
+/* ==== Global & Particle Canvas ==== */
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
   background:
     linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
     url('images/bg.jpg') no-repeat center center fixed;
   background-size: cover;
-
   color: var(--dark-text);
   font-family: Arial, sans-serif;
-  line-height: 1.6;
-  padding: 2rem;
+  line-height:1.6;
+  padding:2rem;
+  transition: background .5s, color .5s;
 }
-h1 {
-  text-align: center;
-  color: var(--dark-text);
-  margin-bottom: 1.5rem;
+#particle-canvas {
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  z-index:-1;
 }
 
-/* ===== Theme Toggle Button ===== */
+/* ==== Theme Toggle Button ==== */
 #theme-toggle {
-  position: fixed;
-  top: 1rem; right: 1rem;
-  padding: 0.5rem 1rem;
-  border: none; border-radius: 4px;
-  background: var(--neon-pink);
-  color: #000; cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 2px 6px var(--dark-shadow);
+  position: fixed; top:1rem; right:1rem;
+  padding:.5rem 1rem; border:none; border-radius:4px;
+  background: var(--neon-pink); color:#000; cursor:pointer;
+  z-index:1000; box-shadow:0 2px 6px var(--dark-shadow);
+  transition: background .3s;
 }
-#theme-toggle:hover {
-  background: var(--neon-yellow);
+#theme-toggle:hover { background: var(--neon-yellow); }
+
+/* ==== Typewriter + Gradient Text ==== */
+#header-title {
+  font-size:2.5rem; text-align:center; margin-bottom:1.5rem;
+  white-space:nowrap; overflow:hidden;
+  border-right:.15em solid var(--dark-text);
+}
+@keyframes cursor-blink {
+  0%,100% { border-color: transparent; }
+  50%     { border-color: var(--dark-text); }
+}
+#header-title { animation: cursor-blink .7s steps(1) infinite; }
+
+/* Gradient animation */
+#header-title.gradient {
+  background: linear-gradient(270deg,#ff0099,#493240,#00f2ea,#ff0099);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnim 8s ease infinite;
+}
+@keyframes gradientAnim {
+  0%   { background-position:0% 50%; }
+  50%  { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
 }
 
-/* ===== Sections ===== */
+/* ==== Sections (Slide-up + Fade-in + Neon Glow) ==== */
 .section {
   background: var(--dark-section-bg);
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  border-left: 4px solid;
-  border-right: 4px solid;
-  border-radius: 6px;
-  box-shadow: 0 6px 18px var(--dark-shadow);
+  padding:1.5rem; margin-bottom:2rem;
+  border-left:4px solid var(--border-color);
+  border-right:4px solid var(--border-color);
+  border-radius:6px;
+  box-shadow:0 6px 18px var(--dark-shadow);
+
+  /* slide+fade */
+  opacity:0; transform:translateY(20px);
+  transition: opacity .6s ease-out, transform .6s ease-out;
+}
+/* define per-section neon */
+#personal-info   { --border-color: var(--neon-blue);   }
+#introduction    { --border-color: var(--neon-green);  }
+#education       { --border-color: var(--neon-orange); }
+#experience      { --border-color: var(--neon-pink);   }
+#skills          { --border-color: var(--neon-yellow); }
+
+/* neon glow */
+@keyframes neon-glow {
+  from { box-shadow:0 0 4px var(--border-color); }
+  to   { box-shadow:0 0 16px var(--border-color); }
+}
+body:not(.light-mode) .section {
+  animation: neon-glow 1.5s ease-in-out infinite alternate;
 }
 
-/* Neon borders in dark */
-#personal-info   { border-color: var(--neon-blue);   }
-#introduction    { border-color: var(--neon-green);  }
-#education       { border-color: var(--neon-orange); }
-#experience      { border-color: var(--neon-pink);   }
-#skills          { border-color: var(--neon-yellow); }
+/* in-view */
+.section.in-view {
+  opacity:1; transform:translateY(0);
+}
 
-/* ===== Tables (Dark) ===== */
+/* ==== Tables Dark ==== */
 table {
-  width: 100%; border-collapse: collapse; margin-top: 1rem;
+  width:100%; border-collapse:collapse; margin-top:1rem;
 }
-thead {
-  background: rgba(255,255,255,0.1);
-}
+thead { background:rgba(255,255,255,0.1); }
 thead th {
-  color: var(--dark-text); padding: 0.75rem; text-align: left;
+  color: var(--dark-text); padding:.75rem; text-align:left;
 }
-tbody tr:nth-child(even) {
-  background: #272727;
-}
+tbody tr:nth-child(even) { background:#272727; }
 tbody td {
-  padding: 0.75rem; border-bottom: 1px solid #333;
+  padding:.75rem; border-bottom:1px solid #333;
   color: var(--dark-text);
 }
 
-/* Toggle rows hidden */
-.desc { display: none; }
-
-/* Toggle buttons */
+/* toggle rows */
+.desc { display:none; }
 .toggle-btn {
-  padding: 0.4rem 0.8rem; border: none; border-radius: 4px;
-  background: #37474f; color: var(--dark-text); cursor: pointer;
+  padding:.4rem .8rem; border:none; border-radius:4px;
+  background:#37474f; color: var(--dark-text); cursor:pointer;
+  transition: background .2s;
 }
-.toggle-btn:hover { background: #546e7a; }
+.toggle-btn:hover { background:#546e7a; }
 
-/* Footer */
+/* ==== Footer ==== */
 footer {
-  text-align: center; margin-top: 2rem;
-  color: #999; font-size: 0.9rem;
+  text-align:center; margin-top:2rem;
+  color:#999; font-size:.9rem;
 }
 
-/* ===== LIGHT MODE ===== */
+/* ==== Light Mode ==== */
 body.light-mode {
   background:
     linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)),
@@ -118,35 +152,24 @@ body.light-mode {
   background-size: cover;
   color: var(--light-text);
 }
-/* Sections light */
 body.light-mode .section {
   background: var(--light-section-bg);
-  box-shadow: 0 6px 18px var(--light-shadow);
-  color: var(--light-text);
+  box-shadow:0 6px 18px var(--light-shadow);
 }
-/* Cold borders in light */
-body.light-mode #personal-info   { border-color: var(--cold-blue);  }
-body.light-mode #introduction    { border-color: var(--cold-teal);  }
-body.light-mode #education       { border-color: var(--cold-steel); }
-body.light-mode #experience      { border-color: var(--cold-slate); }
-body.light-mode #skills          { border-color: var(--cold-cyan);  }
-
-/* Tables light */
-body.light-mode thead {
-  background: #eee;
-}
-body.light-mode tbody tr:nth-child(odd) {
-  background: #fff;
-}
-body.light-mode tbody tr:nth-child(even) {
-  background: #f7f7f7;
-}
+/* cold borders */
+body.light-mode #personal-info   { --border-color: var(--cold-blue);  }
+body.light-mode #introduction    { --border-color: var(--cold-teal);  }
+body.light-mode #education       { --border-color: var(--cold-steel); }
+body.light-mode #experience      { --border-color: var(--cold-slate); }
+body.light-mode #skills          { --border-color: var(--cold-cyan);  }
+/* tables light */
+body.light-mode thead { background:#eee; }
+body.light-mode tbody tr:nth-child(odd)  { background:#fff;    }
+body.light-mode tbody tr:nth-child(even) { background:#f7f7f7; }
 body.light-mode thead th,
 body.light-mode tbody td {
-  color: var(--light-text);
-  border-bottom: 1px solid #ccc;
+  color: var(--light-text); border-bottom:1px solid #ccc;
 }
-/* Toggle buttons in light */
 body.light-mode .toggle-btn {
-  background: #ccc; color: var(--light-text);
+  background:#ccc; color: var(--light-text);
 }

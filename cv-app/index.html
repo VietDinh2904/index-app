@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Curriculum Vitae – Dinh Hoang Viet</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
 </head>
 <body>
+
+  <!-- Particle background -->
+  <canvas id="particle-canvas"></canvas>
+
   <!-- Theme toggle -->
   <button id="theme-toggle">Switch to Light Mode</button>
 
-  <h1>Curriculum Vitae</h1>
+  <!-- Typewriter + gradient header -->
+  <h1 id="header-title" data-text="Curriculum Vitae"></h1>
 
   <section class="section" id="personal-info">
     <h2>Personal Information</h2>
     <ul>
       <li><strong>Full name:</strong> Dinh Hoang Viet</li>
-      <li><strong>Phone number:</strong> 0937290489</li>
-      <li><strong>Email address:</strong> dinhhoangviet2904@gmail.com</li>
+      <li><strong>Phone:</strong> 0937290489</li>
+      <li><strong>Email:</strong> dinhhoangviet2904@gmail.com</li>
     </ul>
   </section>
 
@@ -33,28 +38,12 @@
     <h2>Education</h2>
     <table>
       <thead>
-        <tr>
-          <th>Period</th>
-          <th>Organization</th>
-          <th>Major</th>
-        </tr>
+        <tr><th>Period</th><th>Organization</th><th>Major</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td>2000 – 2007</td>
-          <td>Tran Dai Nghia High School for the Gifted, HCM</td>
-          <td>Math &amp; Computer Science</td>
-        </tr>
-        <tr>
-          <td>2008 – 2012</td>
-          <td>University of Education of Ho Chi Minh City</td>
-          <td>Bachelor of English Teaching</td>
-        </tr>
-        <tr>
-          <td>2013 – 2015</td>
-          <td>Curtin University, WA, Australia</td>
-          <td>Master in Applied Linguistics</td>
-        </tr>
+        <tr><td>2000–2007</td><td>Tran Dai Nghia High School for the Gifted, HCM</td><td>Math &amp; Computer Science</td></tr>
+        <tr><td>2008–2012</td><td>University of Education of Ho Chi Minh City</td><td>Bachelor in English Teaching</td></tr>
+        <tr><td>2013–2015</td><td>Curtin University, WA, Australia</td><td>Master in Applied Linguistics</td></tr>
       </tbody>
     </table>
   </section>
@@ -62,92 +51,39 @@
   <section class="section" id="experience">
     <h2>Professional Experience</h2>
     <table>
-      <thead>
-        <tr>
-          <th>Period</th>
-          <th>Organization</th>
-          <th>Role &amp; Description</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Period</th><th>Organization</th><th>Role &amp; Description</th></tr></thead>
       <tbody>
-        <tr>
-          <td>2012 – 2013</td>
-          <td>Ton Duc Thang University – English Center</td>
-          <td>English Teacher: Delivered basic ESL courses and TOEIC preparation classes.</td>
-        </tr>
-        <tr>
-          <td>2018 – 2022</td>
-          <td>HUTECH – Ho Chi Minh City University of Technology</td>
-          <td>Lecturer, English Department & Center: Taught Business English for General Classes.</td>
-        </tr>
-        <tr>
-          <td>2019 – 2022</td>
-          <td>UFM – University of Finance &amp; Marketing</td>
-          <td>Lecturer, English Department: Conducted finance-and-banking English General Classes.</td>
-        </tr>
-        <tr>
-          <td>2023 – Present</td>
-          <td>Upspring &amp; PTE Nemo</td>
-          <td>
-            IELTS &amp; PTE Instructor: Deliver group and one-on-one IELTS/PTE classes, design fully personalized learning paths.
-            <p>Applying technology knowledge to build LLM platforms such as Moodle, and designing online courses.</p>
-          </td>
-        </tr>
+        <tr><td>2012–2013</td><td>Ton Duc Thang University – English Center</td><td>English Teacher: Delivered basic ESL courses and TOEIC prep.</td></tr>
+        <tr><td>2018–2022</td><td>HUTECH – Ho Chi Minh City University of Technology</td><td>Lecturer: Business English &amp; Moodle courses.</td></tr>
+        <tr><td>2019–2022</td><td>UFM – University of Finance &amp; Marketing</td><td>Lecturer: Finance &amp; Banking communication workshops.</td></tr>
+        <tr><td>2023–Present</td><td>Upspring &amp; PTE Nemo</td><td>IELTS &amp; PTE Instructor: group &amp; one-on-one classes; built LLM-based course platforms.</td></tr>
       </tbody>
     </table>
   </section>
 
   <section class="section" id="skills">
     <h2>Key Skills &amp; Tools</h2>
-    <table id="skills-table">
-      <thead>
-        <tr>
-          <th>Skill / Tool</th>
-          <th>Action</th>
-        </tr>
-      </thead>
+    <table>
+      <thead><tr><th>Skill / Tool</th><th>Action</th></tr></thead>
       <tbody>
-        <tr>
-          <td>PTE Academic (Score: 66)</td>
-          <td><button class="toggle-btn" data-target="desc-pte">Show</button></td>
-        </tr>
-        <tr id="desc-pte" class="desc">
-          <td colspan="2">Speaking 64 / Writing 64 / Reading 63 / Listening 60</td>
-        </tr>
-        <tr>
-          <td>E-learning Platforms</td>
-          <td><button class="toggle-btn" data-target="desc-elearning">Show</button></td>
-        </tr>
-        <tr id="desc-elearning" class="desc">
-          <td colspan="2">Moodle (Learnity.vn), H5P, Kahoot, Wordwall, ElevenLabs</td>
-        </tr>
-        <tr>
-          <td>Development &amp; Automation</td>
-          <td><button class="toggle-btn" data-target="desc-dev">Show</button></td>
-        </tr>
-        <tr id="desc-dev" class="desc">
-          <td colspan="2">VS Code, Git/GitHub, Node.js scripts, NotebookLM</td>
-        </tr>
-        <tr>
-          <td>AI &amp; Audio</td>
-          <td><button class="toggle-btn" data-target="desc-audio">Show</button></td>
-        </tr>
-        <tr id="desc-audio" class="desc">
-          <td colspan="2">ElevenLabs TTS, Google Speech-to-Text, TurboScribe + ChatGPT scoring</td>
-        </tr>
-        <tr>
-          <td>Web &amp; Chatbot</td>
-          <td><button class="toggle-btn" data-target="desc-chatbot">Show</button></td>
-        </tr>
-        <tr id="desc-chatbot" class="desc">
-          <td colspan="2">HTML/CSS, JavaScript, phát triển Chatbot cá nhân</td>
-        </tr>
+        <tr><td>PTE Academic (Score: 66)</td><td><button class="toggle-btn" data-target="desc-pte">Show</button></td></tr>
+        <tr id="desc-pte" class="desc"><td colspan="2">Speaking: 64 / Writing: 64 / Reading: 63 / Listening: 60</td></tr>
+
+        <tr><td>E-learning Platforms</td><td><button class="toggle-btn" data-target="desc-elearning">Show</button></td></tr>
+        <tr id="desc-elearning" class="desc"><td colspan="2">Moodle (Learnity.vn), H5P, Kahoot, Wordwall, ElevenLabs</td></tr>
+
+        <tr><td>Development &amp; Automation</td><td><button class="toggle-btn" data-target="desc-dev">Show</button></td></tr>
+        <tr id="desc-dev" class="desc"><td colspan="2">VS Code, Git/GitHub, Node.js scripts, NotebookLM</td></tr>
+
+        <tr><td>AI &amp; Audio Processing</td><td><button class="toggle-btn" data-target="desc-audio">Show</button></td></tr>
+        <tr id="desc-audio" class="desc"><td colspan="2">ElevenLabs TTS, Google Speech-to-Text, TurboScribe + ChatGPT scoring</td></tr>
+
+        <tr><td>Web &amp; Chatbot Development</td><td><button class="toggle-btn" data-target="desc-chatbot">Show</button></td></tr>
+        <tr id="desc-chatbot" class="desc"><td colspan="2">HTML/CSS, JavaScript, personal chatbot development</td></tr>
       </tbody>
     </table>
   </section>
 
-  <footer>
-    &copy; 2025 Dinh Hoang Viet
-  </footer>
+  <footer>&copy; 2025 Dinh Hoang Viet</footer>
 </body>
 </html>
