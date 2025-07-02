@@ -1,105 +1,152 @@
-/* styles.css */
+:root {
+  --dark-bg:            #121212;
+  --dark-section-bg:    #1e1e1e;
+  --dark-text:          #e0e0e0;
+  --dark-shadow:        rgba(0,0,0,0.7);
 
-/* --- Full-page background --- */
-body {
-  font-family: Arial, sans-serif;
-  color: #333;
-  padding: 2rem;
-  /* đây là dòng mới */
-  background: url('images/background.png') no-repeat center center fixed;
-  background-size: cover;
+  --light-bg:           #f0f4f8;
+  --light-section-bg:   #fff;
+  --light-text:         #333;
+  --light-shadow:       rgba(0,0,0,0.1);
+
+  --neon-blue:          #04fbff;
+  --neon-green:         #39ff14;
+  --neon-orange:        #ff7f11;
+  --neon-pink:          #ff1493;
+  --neon-yellow:        #ffff33;
+
+  --cold-blue:          #1e90ff;
+  --cold-teal:          #20b2aa;
+  --cold-steel:         #4682b4;
+  --cold-slate:         #6a5acd;
+  --cold-cyan:          #00ced1;
 }
 
-/* Giữ lại style cho các section */
-.section {
-  background-color: rgba(255,255,255,0.9);
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-/* rest of your CSS… */
-
-
-/* Reset & base */
+/* ===== Global & Background ===== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; padding: 0; box-sizing: border-box;
 }
 body {
+  background:
+    linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+    url('images/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+  color: var(--dark-text);
   font-family: Arial, sans-serif;
-  background-color: #e5ebf0;
-  color: #333;
+  line-height: 1.6;
   padding: 2rem;
 }
 h1 {
   text-align: center;
-  color: #2a5d84;
-  margin-bottom: 2rem;
-}
-h2 {
-  color: #4a90e2;
-  margin-bottom: 1rem;
+  color: var(--dark-text);
+  margin-bottom: 1.5rem;
 }
 
-/* Section wrapper */
+/* ===== Theme Toggle Button ===== */
+#theme-toggle {
+  position: fixed;
+  top: 1rem; right: 1rem;
+  padding: 0.5rem 1rem;
+  border: none; border-radius: 4px;
+  background: var(--neon-pink);
+  color: #000; cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 6px var(--dark-shadow);
+}
+#theme-toggle:hover {
+  background: var(--neon-yellow);
+}
+
+/* ===== Sections ===== */
 .section {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background: var(--dark-section-bg);
   padding: 1.5rem;
   margin-bottom: 2rem;
+  border-left: 4px solid;
+  border-right: 4px solid;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px var(--dark-shadow);
 }
 
-/* Tables */
+/* Neon borders in dark */
+#personal-info   { border-color: var(--neon-blue);   }
+#introduction    { border-color: var(--neon-green);  }
+#education       { border-color: var(--neon-orange); }
+#experience      { border-color: var(--neon-pink);   }
+#skills          { border-color: var(--neon-yellow); }
+
+/* ===== Tables (Dark) ===== */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 0.5rem;
+  width: 100%; border-collapse: collapse; margin-top: 1rem;
 }
 thead {
-  background-color: #4a90e2;
+  background: rgba(255,255,255,0.1);
 }
 thead th {
-  padding: 0.75rem;
-  color: #fff;
-  text-align: left;
+  color: var(--dark-text); padding: 0.75rem; text-align: left;
+}
+tbody tr:nth-child(even) {
+  background: #272727;
 }
 tbody td {
-  padding: 0.75rem;
-  border-bottom: 1px solid #e0e0e0;
-}
-tbody tr:nth-child(even) td {
-  background-color: #f4f8fb;
+  padding: 0.75rem; border-bottom: 1px solid #333;
+  color: var(--dark-text);
 }
 
-/* Hidden description rows */
-.desc {
-  display: none;
-  background-color: #eef6fc;
-}
+/* Toggle rows hidden */
+.desc { display: none; }
 
 /* Toggle buttons */
 .toggle-btn {
-  padding: 0.4rem 0.8rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #4a90e2;
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: background-color 0.2s;
+  padding: 0.4rem 0.8rem; border: none; border-radius: 4px;
+  background: #37474f; color: var(--dark-text); cursor: pointer;
 }
-.toggle-btn:hover {
-  background-color: #357ab8;
-}
+.toggle-btn:hover { background: #546e7a; }
 
 /* Footer */
 footer {
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: #666;
+  text-align: center; margin-top: 2rem;
+  color: #999; font-size: 0.9rem;
+}
+
+/* ===== LIGHT MODE ===== */
+body.light-mode {
+  background:
+    linear-gradient(rgba(255,255,255,0.7),rgba(255,255,255,0.7)),
+    url('images/bg1.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--light-text);
+}
+/* Sections light */
+body.light-mode .section {
+  background: var(--light-section-bg);
+  box-shadow: 0 6px 18px var(--light-shadow);
+  color: var(--light-text);
+}
+/* Cold borders in light */
+body.light-mode #personal-info   { border-color: var(--cold-blue);  }
+body.light-mode #introduction    { border-color: var(--cold-teal);  }
+body.light-mode #education       { border-color: var(--cold-steel); }
+body.light-mode #experience      { border-color: var(--cold-slate); }
+body.light-mode #skills          { border-color: var(--cold-cyan);  }
+
+/* Tables light */
+body.light-mode thead {
+  background: #eee;
+}
+body.light-mode tbody tr:nth-child(odd) {
+  background: #fff;
+}
+body.light-mode tbody tr:nth-child(even) {
+  background: #f7f7f7;
+}
+body.light-mode thead th,
+body.light-mode tbody td {
+  color: var(--light-text);
+  border-bottom: 1px solid #ccc;
+}
+/* Toggle buttons in light */
+body.light-mode .toggle-btn {
+  background: #ccc; color: var(--light-text);
 }
